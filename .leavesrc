@@ -1,0 +1,9 @@
+{
+    "project": {
+        "appname": "claudetech2",
+        "options": {
+            "css": "stylus",
+            "html": "jade"
+        }
+    }
+}

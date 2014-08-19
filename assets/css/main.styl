@@ -1,0 +1,77 @@
+global-reset()
+
+html
+  font-family: Helvetica, YuGothic, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+  min-height:768px
+  height:100%
+  position:relative
+  overflow:hidden
+  transition:all 0.5s
+  *
+    box-sizing:border-box
+
+body
+  background: url(../img/back.jpg) center center / cover no-repeat fixed
+
+.header, .content
+  float:left
+
+.header
+  size: 50% 100%
+  .logo
+    width:200px
+    absolute: top 10% left 10%
+
+  .slogan
+    width:30%
+    absolute:top 30% left 10%
+
+  .menu
+    absolute:bottom 10% left 10%
+    .item a
+      color:white
+      text-decoration:none
+      line-height:3rem
+      font-size:1.2rem
+      transition:all 0.3s
+      &:hover
+        text-shadow:0 0 1px black, 0 0 10px white, 0 0 10px white
+
+.content
+  typography()
+  background:white
+  size:50% 100%
+  padding:20px 50px
+  absolute: top 0 right 0
+  display:none
+
+
+//  -webkit-animation: open-content 3s linear 1
+//
+//
+//@-webkit-keyframes open-content
+//  from
+//    right: -50%
+//  to
+//    right: 0%
+
+
+//@media screen and (max-width: 1368px)
+//  .header
+//    text-align:center
+//    width:30%
+//    .logo
+//      width: 50%
+//      position:inherit
+//      display:block
+//      margin: 100px auto 200px
+//    .slogan
+//      width: 80%
+//      position:inherit
+//      display:block
+//      margin: 0 auto
+//
+//  .content
+//    size: 70% 100%
+//
+//  
