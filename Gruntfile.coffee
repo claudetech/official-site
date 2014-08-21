@@ -11,26 +11,28 @@ module.exports = (grunt) ->
     pkg: grunt.file.readJSON 'package.json'
 
     watch:
-      scripts:
+      coffee:
         cwd: 'assets/js'
         files: 'assets/js**/*.coffee'
-        tasks: ['newer:coffee:dev']
+        tasks: ['brerror:newer:coffee:dev']
+      js:
+        cwd: 'assets/js'
+        files: 'assets/js/**/*.js'
+        tasks: ['newer:copy:js']
       stylesheets:
-        cwd: 'assets/css'
-        
+        cwd: 'assets/css' 
         files: 'assets/css/**/*.styl'
-        tasks: ['newer:stylus:dev']
-        
+        tasks: ['brerror:newer:stylus:dev'] 
       views:
-        cwd: 'views'
+        cwd: 'views' 
         files: 'views/**/*.jade'
-        tasks: ['newer:jade:dev']
+        tasks: ['brerror:newer:jade:dev'] 
       images:
         files: [
           'assets/img/**'
           'assets/favicon.ico'
         ]
-        tasks: ['newer:copy']
+        tasks: ['newer:copy:images']
       options:
         livereload: livereloadPort
 
@@ -86,7 +88,7 @@ module.exports = (grunt) ->
           livereload: true
 
     copy:
-      main:
+      images:
         files: [
           expand: true
           cwd: 'assets'
@@ -96,10 +98,17 @@ module.exports = (grunt) ->
           src: 'assets/favicon.ico'
           dest: 'public/favicon.ico'
         ]
+      js:
+        files: [
+          expand: true
+          cwd: 'assets'
+          src: 'js/**/*.js'
+          dest: 'public'
+        ]
 
     concurrent:
       start:
-        tasks: ['connect', 'watch']
+        tasks: ['connect', 'watch', 'brerror:server']
         options:
           logConcurrentOutput: true
           gruntPath: path.join __dirname, 'node_modules', 'grunt-cli', 'bin', 'grunt'
