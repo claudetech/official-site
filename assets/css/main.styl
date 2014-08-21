@@ -64,11 +64,11 @@ body
       padding:5px 20px
       border:1px solid white
       &:nth-child(1)
-        background:#eee
+        background: rgba(0,0,0,0.1)
         width:20%
         min-width:120px
       &:nth-child(2)
-        background:#fafafa
+        background: rgba(0,0,0,0.05)
 
   &.team
     .member
@@ -77,15 +77,14 @@ body
       .picture
         float:left
         size:100px 200px
-      .name
-        font-size:16px
-        inline-block()
-        bold()
-        padding:5px 20px
-      .bio
+      .name, .email, .bio
         float:left
+        padding:0px 20px
         width:75%
-        padding:5px 20px
+      .name
+        bold()
+      .email
+        font-size:13px
 
   &.contact
     .field
