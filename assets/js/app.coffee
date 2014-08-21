@@ -1,4 +1,9 @@
 $ ->
+  $('.logo').click (e) ->
+    e.preventDefault()
+    e.stopPropagation()
+    $('.back, .header, .content').removeClass('opened')
+
   $('.menu a').click (e) ->
     e.preventDefault()
     e.stopPropagation()

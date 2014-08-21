@@ -1,5 +1,10 @@
 (function() {
   $(function() {
+    $('.logo').click(function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      return $('.back, .header, .content').removeClass('opened');
+    });
     return $('.menu a').click(function(e) {
       e.preventDefault();
       e.stopPropagation();
