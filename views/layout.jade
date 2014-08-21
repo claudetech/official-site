@@ -13,8 +13,8 @@ html
     != '\n<![endif]-->\n'
     link(rel="shortcut icon", href="./images/favicon.ico")
     link(rel="stylesheet" href="css/main.css")
-    script(src="//cdnjs.cloudflare.com/ajax/libs/zepto/1.1.4/zepto.min.js")
-    script(src="js/app.js")
+    script(src="//cdnjs.cloudflare.com/ajax/libs/zepto/1.1.4/zepto.min.js", async)
+    script(src="js/app.js", async)
   body
     include _header
     block content
