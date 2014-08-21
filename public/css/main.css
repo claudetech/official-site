@@ -390,10 +390,8 @@ body {
 }
 .content.team .member .picture {
   float: left;
-  border-radius: 5px;
-  border: 3px solid #74828b;
   width: 100px;
-  height: 100px;
+  height: 200px;
 }
 .content.team .member .name {
   font-size: 16px;
