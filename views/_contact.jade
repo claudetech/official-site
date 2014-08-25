@@ -2,17 +2,18 @@
   h1 お問い合わせ
   p 楽しいお話、待ってます！
 
-  .field.name
-    label(for='name') お名前
-    input#name(type='text', name='name')
+  form(autocomplete='off')
+    .field.name
+      label(for='name') お名前
+      input#name(type='text', name='name', autocomplete='off')
 
-  .field.email
-    label(for='email') メールアドレス
-    input#email(type='email', name='email')
+    .field.email
+      label(for='email') メールアドレス
+      input#email(type='email', name='email', autocomplete='off')
 
-  .field.body
-    label(for='body') お問い合せ内容
-    textarea#body(name='body')
+    .field.body
+      label(for='body') お問い合せ内容
+      textarea#body(name='body')
 
-  .button
-    button(type='sumbit') 送信
+    .button
+      button(type='sumbit') 送信

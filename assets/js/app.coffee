@@ -1,4 +1,5 @@
 $ ->
+  #$('.content.service, .back').addClass('opened')
   $('.logo').click (e) ->
     e.preventDefault()
     e.stopPropagation()
