@@ -2,7 +2,7 @@
   h1 お問い合わせ
   p 楽しいお話、待ってます！
 
-  form(autocomplete='off')
+  form#contact-form
     .field.name
       label(for='name') お名前
       input#name(type='text', name='name', autocomplete='off')
@@ -15,5 +15,5 @@
       label(for='body') お問い合せ内容
       textarea#body(name='body')
 
-    .button
-      button(type='sumbit') 送信
+  .button
+    button#send(type='sumbit') 送信

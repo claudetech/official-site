@@ -58,31 +58,33 @@ body
   padding:50px 80px 100px
   line-height:30px
   overflow-y:scroll
+  & > *:not(h1)
+    margin-left:30px
+  h1
+    fs(26px)
+    margin-top:60px
+  h2
+    fs(24px)
+  h3
+    fs(20px)
 
   &.about
     td
       padding:5px 20px
       border:1px solid white
+      fs(15px)
       &:nth-child(1)
         background: rgba(0,0,0,0.1)
         width:20%
         min-width:120px
       &:nth-child(2)
         background: rgba(0,0,0,0.05)
-
-  &.service
-    li.service
-      margin-bottom:2em
-      .title
-        margin:0
-
-  &.team
     .member
       clearfix()
-      margin: 30px 0
+      margin-bottom: 30px
       .picture
         float:left
-        size:100px 200px
+        size:80px 160px
       .name, .email, .bio
         float:left
         padding:0px 20px
@@ -91,6 +93,15 @@ body
         bold()
       .email
         font-size:13px
+      .bio
+        font-size:13px
+        line-height:24px
+
+  &.service
+    li.service
+      margin-bottom:2em
+      .title
+        margin:0
 
   &.contact
     .field
