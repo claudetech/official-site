@@ -5,8 +5,9 @@ class App.Tree
       child.parent = this
 
   path: ->
-    [path, parent] = ["#{@name}", @parent]
+    return "/" unless @parent?
+    [path, parent] = [[@name], @parent]
     while parent?
-      path = "/#{parent.name}" + path
+      path.unshift(parent.name)
       parent = parent.parent
-    if _.isEmpty(path) then "/" else path
+    path.join('/')

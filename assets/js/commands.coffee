@@ -1,5 +1,6 @@
 class App.CommandHandler
   constructor: ->
+    @commands = ['ls', 'cd', 'pwd']
     @root = new App.Tree('', [
       new App.Tree('news')
       new App.Tree('about', [
@@ -20,6 +21,9 @@ class App.CommandHandler
       when 'pwd' then @cwd.path()
       else @handleUndefined(command)
 
+  getCompletion: (term, string, callback) ->
+    callback(@commands)
+
   handleUndefined: (command) ->
     "claudetech: command not found: #{command}"
 
@@ -27,27 +31,33 @@ class App.CommandHandler
     "cd:cd: string not found in pwd: #{args[0]}" if args.length > 1
     oldDir = @cwd
     err = @cd(args?[0] ? '')
-    if _.isEmpty(err)
-      if @cwd.path() == '/'
-        App.closePage()
-      else
-        App.openPage(@cwd.name)
-      ''
+    return err unless _.isEmpty(err)
+    if @cwd.path() == '/'
+      App.closePage()
     else
-      @cwd = oldDir unless _.isEmpty(err)
-      err
+      App.openPage(@cwd.name)
+    ''
 
   cd: (path) ->
-    [dir, left...] = path.split('/')
-    [@cwd, err] = switch dir
-      when '.'  then [@cwd, null]
-      when ''   then [@root, null]
-      when '..' then [(if @cwd.parent? then @cwd.parent else @cwd), null]
-      else
-        d = _.find @cwd.children, {name: dir}
-        if d? then [d, null] else [@cwd, "cd:cd: no such file or directory: #{dir}"]
-    return err if err?
-    if _.isEmpty(left) then '' else @cd(left.join('/'))
+    dir = @_getNode(path)
+    if dir?
+      @cwd = dir
+      ''
+    else
+      "cd:cd: no such file or directory: #{path}"
 
   handleLs: (args) ->
-    _.map(@cwd.children, (v) -> v.name).join('\t')
+    node = if _.isEmpty(args) then @cwd else @_getNode(args[0])
+    _.map(node.children, (v) -> v.name).join('\t')
+
+  _getNode: (path, current=@cwd) ->
+    [dir, left...] = path.split('/')
+    nextDir = switch dir
+      when '.'  then current
+      when ''   then @root
+      when '..' then (if current.parent? then current.parent else current)
+      else
+        d = _.find current.children, {name: dir}
+        if d? then d else null
+    return null unless nextDir?
+    if _.isEmpty(left) then nextDir else @_getNode(left.join('/'), nextDir)

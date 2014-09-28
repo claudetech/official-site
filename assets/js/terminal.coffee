@@ -1,6 +1,7 @@
 class App.TerminalHandler
   constructor: ->
-    window.terminal = @terminal = $('#terminal').terminal (command, term) =>
+    @commandHandler = new App.CommandHandler()
+    @terminal = $('#terminal').terminal (command, term) =>
       output = @commandHandler.handle(command)
       term.echo(output)
     ,
@@ -10,9 +11,10 @@ class App.TerminalHandler
       height: 400
       width: $(window).width() / 3
       hidden: true
+      completion: (term, string, callback) =>
+        @commandHandler.getCompletion(term, string, callback)
     @terminal.disable()
     @visible = false
-    @commandHandler = new App.CommandHandler()
 
   toggle: ->
     @terminal.enable()
