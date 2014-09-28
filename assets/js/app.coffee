@@ -1,3 +1,13 @@
+window.App ?= {}
+
+App.openPage = (page) ->
+  $('.back, .header').addClass('opened')
+  $('.content').removeClass('opened')
+  $(".content.#{page}").addClass('opened')
+
+App.closePage = ->
+  $('.back, .header, .content').removeClass('opened')
+
 $ ->
   hash = window.location.hash.substr(1)
   if(hash != '')
@@ -7,13 +17,11 @@ $ ->
   $('.logo').click (e) ->
     e.preventDefault()
     e.stopPropagation()
-    $('.back, .header, .content').removeClass('opened')
+    App.closePage()
 
   $('.menu a').click (e) ->
-    $('.back, .header').addClass('opened')
-    $('.content').removeClass('opened')
-    $('.content.' + $(this).attr('href').substr(1)).addClass('opened')
-    
+    App.openPage($(this).attr('href').substr(1))
+
   $('#send').click (e) ->
     if( $("#name").val() && $("#email").val() && $("#body").val() )
       $('#send').hide()
