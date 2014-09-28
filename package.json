@@ -14,10 +14,14 @@
         "grunt-contrib-copy": "^0.5.0",
         "grunt-contrib-stylus": "^0.18.0",
         "grunt-contrib-watch": "^0.6.1",
+        "grunt-contrib-clean": "^0.6.0",
+        "grunt-html-glob": "^0.1.0",
         "grunt-newer": "^0.7.0",
         "grunt-brerror": "^0.1.4",
+        "uglify-js": "^2.4.15",
         "load-grunt-tasks": "^0.6.0",
         "grunt-cli": "^0.1.13",
-        "lorem-ipsum": "^1.0.1"
+        "lorem-ipsum": "^1.0.1",
+        "lodash": "^2.4.1"
     }
 }

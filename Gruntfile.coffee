@@ -4,6 +4,7 @@ httpServerPort = 9000
 fs         = require 'fs'
 path       = require 'path'
 loremIpsum = require 'lorem-ipsum'
+_          = require 'lodash'
 
 lorem = (count, options={}) ->
   if typeof count == 'number'
@@ -13,6 +14,35 @@ lorem = (count, options={}) ->
   options.units ?= 'words'
   loremIpsum options
 
+
+cssFiles = [
+  expand: true
+  cwd: 'assets'
+  src: ['css/**/*.styl', '!css/**/_*. styl']
+  dest: 'public'
+  ext: '.css'
+]
+cssDistFiles = [_.extend({}, cssFiles[0], {dest: 'dist'})]
+
+htmlFiles = [
+  expand: true
+  cwd: 'views'
+  src: ['**/*.jade', '!**/_*.jade', '!layout.jade']
+  dest: 'public'
+  ext: '.html'
+]
+htmlDistFiles = [_.extend({}, htmlFiles[0], {dest: 'dist'})]
+
+coffeeFiles = [
+  expand: true
+  cwd: 'assets'
+  src: ['js/**/*.coffee']
+  dest: 'public'
+  ext: '.js'
+]
+coffeeDistFiles = [_.extend({}, coffeeFiles[0], {dest: 'dist'})]
+
+
 module.exports = (grunt) ->
   require('load-grunt-tasks')(grunt)
 
@@ -20,71 +50,79 @@ module.exports = (grunt) ->
     pkg: grunt.file.readJSON 'package.json'
 
     watch:
+      public:
+        files: ['assets/**/*', '!assets/css/**/*.styl','!assets/js/**/*.coffee']
+        tasks: ['newer:copy:dev:public']
+        options:
+          event: ['changed']
+      publicGlob:
+        files: ['assets/**/*', '!assets/css/**/*.styl', '!assets/js/**/*.coffee']
+        tasks: ['copy:dev:public', 'brerror:jade:dev', 'glob:dev']
+        options:
+          event: ['added', 'deleted']
       coffee:
         cwd: 'assets/js'
-        files: 'assets/js**/*.coffee'
+        files: 'assets/js/**/*.coffee'
         tasks: ['brerror:newer:coffee:dev']
-      js:
+        options:
+          event: ['changed']
+      coffeeGlob:
         cwd: 'assets/js'
-        files: 'assets/js/**/*.js'
-        tasks: ['newer:copy:js']
+        files: 'assets/js/**/*.coffee'
+        tasks: ['brerror:newer:coffee:dev', 'brerror:jade:dev', 'glob:dev']
+        options:
+          event: ['added', 'deleted']
       stylesheets:
-        cwd: 'assets/css' 
+        cwd: 'assets/css'
         files: 'assets/css/**/*.styl'
-        tasks: ['brerror:newer:stylus:dev'] 
+        tasks: ['brerror:newer:stylus:dev']
+        options:
+          event: ['changed']
+      stylesheetsGlob:
+        cwd: 'assets/css'
+        files: 'assets/css/**/*.styl'
+        tasks: ['brerror:newer:stylus:dev', 'brerror:jade:dev', 'glob:dev']
+        options:
+          event: ['added', 'deleted']
       views:
-        cwd: 'views' 
+        cwd: 'views'
         files: 'views/**/*.jade'
-        tasks: ['brerror:newer:jade:dev'] 
-      images:
-        files: [
-          'assets/img/**'
-          'assets/favicon.ico'
-        ]
-        tasks: ['newer:copy:images']
+        tasks: ['brerror:newer:jade:dev', 'glob:dev']
       options:
         livereload: livereloadPort
 
     coffee:
       dev:
-        files: [
-          expand: true
-          cwd: 'assets'
-          src: ['js/**/*.coffee']
-          dest: 'public'
-          ext: '.js'
-        ]
-    
+        files: coffeeFiles
+      dist:
+        files: coffeeDistFiles
+
+
     stylus:
       dev:
-        files: [
-          expand: true
-          cwd: 'assets'
-          src: ['css/**/*.styl', '!css/**/_*.styl']
-          dest: 'public'
-          ext: '.css'
-        ]
+        files: cssFiles
         options:
           compress: false
+      dist:
+        files: cssDistFiles
+        options:
+          compress: true
       options:
         use: [
           require 'axis-css'
         ]
-    
+
     jade:
       dev:
-        files: [
-          expand: true
-          cwd: 'views'
-          src: ['**/*.jade', '!**/_*.jade', '!layout.jade']
-          dest: 'public'
-          ext: '.html'
-        ]
+        files: htmlFiles
         options:
           pretty: true
-          data:
-            lorem: lorem
-    
+      dist:
+        files: htmlDistFiles
+      options:
+        data:
+          lorem: lorem
+
     connect:
       server:
         options:
@@ -97,22 +135,29 @@ module.exports = (grunt) ->
           livereload: true
 
     copy:
-      images:
+      dev:
         files: [
           expand: true
           cwd: 'assets'
-          src: ['img/**']
+          src: ['**/*', '!css/**/*.styl', '!js/**/*.coffee']
           dest: 'public'
         ,
-          src: 'assets/favicon.ico'
-          dest: 'public/favicon.ico'
+          expand: true
+          cwd: '.components'
+          src: ['**/*', '!**/src/**']
+          dest: 'public/components'
         ]
-      js:
+      dist:
         files: [
           expand: true
+          cwd: '.components'
+          src: ['**/*', '!**/src/**']
+          dest: 'dist/components'
+        ,
+          expand: true
           cwd: 'assets'
-          src: 'js/**/*.js'
-          dest: 'public'
+          src: ['**/*', '!css/**/*.styl', '!js/**/*.coffee']
+          dest: 'dist'
         ]
 
     concurrent:
@@ -122,33 +167,67 @@ module.exports = (grunt) ->
           logConcurrentOutput: true
           gruntPath: path.join __dirname, 'node_modules', 'grunt-cli', 'bin', 'grunt'
 
+    newer:
+      options:
+        override: (detail, include) ->
+          cwdPath = grunt.config("#{detail.task}.#{detail.target}.files.0.cwd")
+          return include() unless cwdPath?
+          cwd = path.join __dirname, cwdPath
+          baseFile = path.join __dirname, detail.path
+          content = fs.readFileSync baseFile, 'utf8'
+          compile = needsCompile cwd, baseFile, detail.time, content
+          include(compile)
 
-  searchWord = (word, file, callback) ->
-    fs.readdir file, (err, files) ->
-      return unless err is null
-      files.forEach (f) ->
+    clean:
+      dev: ['public']
+      dist: ['dist']
+
+    glob:
+      dev:
+        files: [
+          expand: true
+          cwd: 'public'
+          src: ['**/*.html']
+          dest: 'public'
+          ext: '.html'
+        ]
+      dist:
+        files: [
+          expand: true
+          cwd: 'dist'
+          src: ['**/*.html']
+          dest: 'dist'
+          ext: '.html'
+        ]
+        options:
+          concat: true
+          minify: true
+
+
+  needsCompile = (file, baseFile, time, content) ->
+    stat = fs.statSync file
+    if stat.isDirectory()
+      dirFiles = fs.readdirSync(file)
+      for f in dirFiles
         filepath = path.join file, f
-        stat = fs.statSync filepath
-        if stat.isDirectory()
-          searchWord word, filepath, callback
-        else
-          fs.readFile filepath, 'utf8', (err, data) ->
-            return unless err is null
-            if data.indexOf(word) > -1
-              callback filepath
+        return true if needsCompile filepath, baseFile, time, content
+    else
+      return false if file == baseFile || stat.mtime < time
+      filename = path.basename(file)
+      word = filename.substr(0, filename.lastIndexOf('.'))
+      return true if content.indexOf(word) > -1
+    return false
 
-  grunt.event.on 'watch', (action, filepath, task) ->
-    return if task == 'images'
-    cwd = path.join __dirname, grunt.config("watch.#{task}.cwd")
-    filename = path.basename filepath, path.extname(filepath)
-    searchWord filename, cwd, (file) ->
-      date = new Date()
-      fs.utimes file, date, date
-
-  grunt.registerTask 'compile:dev', [
-    'copy'       
-    'jade:dev'   
-    'stylus:dev' 
-    'coffee:dev'
+  compileTasks = (env) -> [
+    "clean:#{env}"
+    "copy:#{env}"
+    "jade:#{env}"
+    "coffee:#{env}"
+    "stylus:#{env}"
+    "glob:#{env}"
   ]
+
+  grunt.registerTask 'compile:dev', compileTasks('dev')
+  grunt.registerTask 'compile:dist', compileTasks('dist')
+
   grunt.registerTask 'default', ['compile:dev', 'concurrent:start']
