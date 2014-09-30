@@ -19,7 +19,7 @@ cssFiles = [
   expand: true
   cwd: 'assets'
   src: ['css/**/*.styl', '!css/**/_*. styl']
-  dest: 'public'
+  dest: 'tmp'
   ext: '.css'
 ]
 cssDistFiles = [_.extend({}, cssFiles[0], {dest: 'dist'})]
@@ -28,7 +28,7 @@ htmlFiles = [
   expand: true
   cwd: 'views'
   src: ['**/*.jade', '!**/_*.jade', '!layout.jade']
-  dest: 'public'
+  dest: 'tmp'
   ext: '.html'
 ]
 htmlDistFiles = [_.extend({}, htmlFiles[0], {dest: 'dist'})]
@@ -37,10 +37,19 @@ coffeeFiles = [
   expand: true
   cwd: 'assets'
   src: ['js/**/*.coffee']
-  dest: 'public'
+  dest: 'tmp'
   ext: '.js'
 ]
 coffeeDistFiles = [_.extend({}, coffeeFiles[0], {dest: 'dist'})]
+
+globFiles = [
+  expand: true
+  cwd: 'tmp'
+  src: ['**/*.html']
+  dest: 'tmp'
+  ext: '.html'
+]
+globDistFiles = [_.extend({}, globFiles[0], {dest: 'dist', cwd: 'dist'})]
 
 
 module.exports = (grunt) ->
@@ -50,71 +59,79 @@ module.exports = (grunt) ->
     pkg: grunt.file.readJSON 'package.json'
 
     watch:
-      public:
+      assets:
         files: ['assets/**/*', '!assets/css/**/*.styl','!assets/js/**/*.coffee']
-        tasks: ['newer:copy:dev:public']
+        tasks: ['newer:copy:tmpAssets']
         options:
           event: ['changed']
-      publicGlob:
+      assetsGlob:
         files: ['assets/**/*', '!assets/css/**/*.styl', '!assets/js/**/*.coffee']
-        tasks: ['copy:dev:public', 'brerror:jade:dev', 'glob:dev']
+        tasks: ['copy:tmpAssets', 'brerror:jade:tmp', 'glob:tmp']
         options:
           event: ['added', 'deleted']
       coffee:
         cwd: 'assets/js'
         files: 'assets/js/**/*.coffee'
-        tasks: ['brerror:newer:coffee:dev']
+        tasks: ['brerror:newer:coffee:tmp']
         options:
           event: ['changed']
       coffeeGlob:
         cwd: 'assets/js'
         files: 'assets/js/**/*.coffee'
-        tasks: ['brerror:newer:coffee:dev', 'brerror:jade:dev', 'glob:dev']
+        tasks: ['brerror:newer:coffee:tmp', 'brerror:jade:tmp', 'glob:tmp']
         options:
           event: ['added', 'deleted']
       stylesheets:
         cwd: 'assets/css'
         files: 'assets/css/**/*.styl'
-        tasks: ['brerror:newer:stylus:dev']
+        tasks: ['brerror:newer:stylus:tmp']
         options:
           event: ['changed']
       stylesheetsGlob:
         cwd: 'assets/css'
         files: 'assets/css/**/*.styl'
-        tasks: ['brerror:newer:stylus:dev', 'brerror:jade:dev', 'glob:dev']
+        tasks: ['brerror:newer:stylus:tmp', 'brerror:jade:tmp', 'glob:tmp']
         options:
           event: ['added', 'deleted']
       views:
         cwd: 'views'
         files: 'views/**/*.jade'
-        tasks: ['brerror:newer:jade:dev', 'glob:dev']
+        tasks: ['brerror:newer:jade:tmp', 'glob:tmp']
       options:
         livereload: livereloadPort
 
     coffee:
-      dev:
+      tmp:
         files: coffeeFiles
+      dev:
+        files: coffeeDistFiles
       dist:
         files: coffeeDistFiles
 
 
     stylus:
-      dev:
+      tmp:
         files: cssFiles
+        options:
+          compress: false
+      dev:
+        files: cssDistFiles
         options:
           compress: false
       dist:
         files: cssDistFiles
-        options:
-          compress: true
       options:
         use: [
           require 'axis-css'
         ]
 
     jade:
-      dev:
+      tmp:
         files: htmlFiles
+        options:
+          pretty: true
+      dev:
+        files: htmlDistFiles
         options:
           pretty: true
       dist:
@@ -129,24 +146,22 @@ module.exports = (grunt) ->
           port: httpServerPort
           keepalive: true
           debug: true
-          base: 'public'
+          base: 'tmp'
           useAvailablePort: true
           open: true
           livereload: true
 
     copy:
-      dev:
-        files: [
-          expand: true
-          cwd: 'assets'
-          src: ['**/*', '!css/**/*.styl', '!js/**/*.coffee']
-          dest: 'public'
-        ,
+      tmpAssets:
+        expand: true
+        cwd: 'assets'
+        src: ['**/*', '!css/**/*.styl', '!js/**/*.coffee']
+        dest: 'tmp'
+      tmpComponents:
           expand: true
           cwd: '.components'
           src: ['**/*', '!**/src/**']
-          dest: 'public/components'
-        ]
+          dest: 'tmp/components'
       dist:
         files: [
           expand: true
@@ -179,26 +194,17 @@ module.exports = (grunt) ->
           include(compile)
 
     clean:
-      dev: ['public']
+      tmp: ['tmp']
       dist: ['dist']
+      dev: ['dist']
 
     glob:
+      tmp:
+        files: globFiles
       dev:
-        files: [
-          expand: true
-          cwd: 'public'
-          src: ['**/*.html']
-          dest: 'public'
-          ext: '.html'
-        ]
+        files: globDistFiles
       dist:
-        files: [
-          expand: true
-          cwd: 'dist'
-          src: ['**/*.html']
-          dest: 'dist'
-          ext: '.html'
-        ]
+        files: globDistFiles
         options:
           concat: true
           minify: true
@@ -218,16 +224,35 @@ module.exports = (grunt) ->
       return true if content.indexOf(word) > -1
     return false
 
+  mapFile = (filepath) ->
+    filepath = filepath.replace /^(assets|views)/, 'tmp'
+    filepath = filepath.replace /\.styl$/, '.css'
+    filepath = filepath.replace /\.coffee$/, '.js'
+    filepath = filepath.replace /\.jade$/, '.html'
+    filepath
+
+  grunt.event.on 'watch', (event, file, task) ->
+    return unless event == 'deleted'
+    filepath = path.join __dirname, mapFile(file)
+    grunt.file.delete(filepath) if fs.existsSync filepath
+
   compileTasks = (env) -> [
     "clean:#{env}"
-    "copy:#{env}"
+    "makeCopy:#{env}"
     "jade:#{env}"
     "coffee:#{env}"
     "stylus:#{env}"
     "glob:#{env}"
   ]
 
+  grunt.registerTask 'makeCopy', (env) ->
+    if env == 'tmp'
+      grunt.task.run ["copy:tmpAssets", "copy:tmpComponents"]
+    else
+      grunt.task.run ["copy:dist"]
+
+  grunt.registerTask 'compile:tmp', compileTasks('tmp')
   grunt.registerTask 'compile:dev', compileTasks('dev')
   grunt.registerTask 'compile:dist', compileTasks('dist')
 
-  grunt.registerTask 'default', ['compile:dev', 'concurrent:start']
+  grunt.registerTask 'default', ['compile:tmp', 'concurrent:start']
