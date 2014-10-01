@@ -24,14 +24,14 @@ cssFiles = [
 ]
 cssDistFiles = [_.extend({}, cssFiles[0], {dest: 'dist'})]
 
-htmlFiles = [
+templateFiles = [
   expand: true
   cwd: 'views'
   src: ['**/*.jade', '!**/_*.jade', '!layout.jade']
   dest: 'tmp'
   ext: '.html'
 ]
-htmlDistFiles = [_.extend({}, htmlFiles[0], {dest: 'dist'})]
+templateDistFiles = [_.extend({}, templateFiles[0], {dest: 'dist'})]
 
 coffeeFiles = [
   expand: true
@@ -42,14 +42,14 @@ coffeeFiles = [
 ]
 coffeeDistFiles = [_.extend({}, coffeeFiles[0], {dest: 'dist'})]
 
-globFiles = [
+htmlFiles = [
   expand: true
   cwd: 'tmp'
   src: ['**/*.html']
   dest: 'tmp'
   ext: '.html'
 ]
-globDistFiles = [_.extend({}, globFiles[0], {dest: 'dist', cwd: 'dist'})]
+htmlDistFiles = [_.extend({}, htmlFiles[0], {dest: 'dist', cwd: 'dist'})]
 
 
 module.exports = (grunt) ->
@@ -127,15 +127,15 @@ module.exports = (grunt) ->
 
     jade:
       tmp:
-        files: htmlFiles
+        files: templateFiles
         options:
           pretty: true
       dev:
-        files: htmlDistFiles
+        files: templateDistFiles
         options:
           pretty: true
       dist:
-        files: htmlDistFiles
+        files: templateDistFiles
       options:
         data:
           lorem: lorem
@@ -200,14 +200,28 @@ module.exports = (grunt) ->
 
     glob:
       tmp:
-        files: globFiles
+        files: htmlFiles
       dev:
-        files: globDistFiles
+        files: htmlDistFiles
       dist:
-        files: globDistFiles
+        files: htmlDistFiles
         options:
           concat: true
           minify: true
+
+    cdnify:
+      tmp:
+        files: htmlFiles
+        options:
+          useLocal: true
+      dev:
+        files: htmlDistFiles
+        options:
+          useLocal: true
+      dist:
+        files: htmlDistFiles
+      options:
+        incompatible: ['glob']
 
 
   needsCompile = (file, baseFile, time, content) ->
@@ -242,6 +256,7 @@ module.exports = (grunt) ->
     "jade:#{env}"
     "coffee:#{env}"
     "stylus:#{env}"
+    "cdnify:#{env}"
     "glob:#{env}"
   ]
 
