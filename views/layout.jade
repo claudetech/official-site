@@ -2,27 +2,26 @@ doctype html
 html
   head
     meta(charset="utf-8")
-    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
     title Claude Tech
-    meta(name="author", content="Claudetech officials")
-    meta(name="description", content="We create nice softwares. Stay tuned.")
-    meta(name="viewport", content="width=840")
-    meta(property="og:title", content="Claude Tech")
-    meta(property="og:type", content="website")
-    meta(property="og:url", content="http://claudetech.com")
-    meta(property="og:image", content="http://claudetech.com/img/claudetech.png")
+    meta(name="author" content="Claudetech officials")
+    meta(name="description" content="We create nice softwares. Stay tuned.")
+    meta(name="viewport" content="width=840")
+    meta(property="og:title" content="Claude Tech")
+    meta(property="og:type" content="website")
+    meta(property="og:url" content="http://claudetech.com")
+    meta(property="og:image" content="http://claudetech.com/img/claudetech.png")
     != '\n<!--[if lt IE 9]>'
       script(src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js")
       script(src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js")
     != '\n<![endif]-->\n'
-    link(rel="shortcut icon", href="./images/favicon.ico")
-    link(rel="stylesheet" href="components/jquery.terminal/css/jquery.terminal.css")
+    link(rel="shortcut icon" href="./favicon.ico")
     link(rel="stylesheet" href="css/main.css")
-    script(src="components/jquery.terminal/js/jquery-1.7.1.min.js" group="vendor")
-    script(src="components/jquery.terminal/js/jquery.terminal-0.8.8.js" group="vendor")
-    script(src="components/jquery.terminal/js/jquery.mousewheel-min.js" group="vendor")
-    script(src="components/lodash/dist/lodash.js" group="vendor")
-    script(glob="js/*.js")
+
+    script(src="components/jquery/dist/jquery.js" cdn="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js")
+    script(src="components/lodash/dist/lodash.js" cdn="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js")
+    script(src="js/app.js" glob)
+    script(src="js/*.js" glob)
     script.
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
