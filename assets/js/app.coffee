@@ -4,9 +4,11 @@ App.openPage = (page) ->
   $('.back, .header').addClass('opened')
   $('.content').removeClass('opened')
   $(".content.#{page}").addClass('opened')
+  ga('send', 'pageview', page)
 
 App.closePage = ->
   $('.back, .header, .content').removeClass('opened')
+  ga('send', 'pageview', '/')
 
 App.initializeHeader = ->
   App.MainVue = new Vue
