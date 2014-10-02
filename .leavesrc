@@ -5,5 +5,11 @@
             "css": "stylus",
             "html": "jade"
         }
+    },
+    "commands": {
+        "publish": {
+            "provider": "ftp",
+            "resetSettings": false
+        }
     }
 }
