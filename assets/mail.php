@@ -4,7 +4,7 @@
   $email = $_POST['email'];
   $message = $_POST['body'];
 
-  $to = "info@claudetech.com";
+  $to = "naito@claudetech.com";
   $subject = "[Claude Tech]　コンタクトフォームからのお問い合わせです。";
   $message = "FROM:\r\n$name\r\n\r\nEmail:\r\n$email\r\n\r\nMessage:\r\n$message";
   $headers = 'From: no-reply@claudetech.com' . "\r\n";
