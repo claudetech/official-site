@@ -4,16 +4,21 @@
 
   form#contact-form
     .field.name
-      label(for='name') お名前
-      input#name(type='text', name='name', autocomplete='off')
+      label(for="name") お名前
+      input#name(type="text" name="name" v-model="form.name" v-if="!submitted()")
+      p(v-if="submitted()") {{form.name}}
+
 
     .field.email
-      label(for='email') メールアドレス
-      input#email(type='email', name='email', autocomplete='off')
+      label(for="email") メールアドレス
+      input#email(type="email" name="email" v-model="form.email" v-if="!submitted()")
+      p(v-if="submitted()") {{form.email}}
 
     .field.body
-      label(for='body') お問い合せ内容
-      textarea#body(name='body')
+      label(for="body") お問い合せ内容
+      textarea#body(name="body" v-model="form.body" v-if="!submitted()")
+      p(v-if="submitted()") {{form.body}}
 
   .button
-    button#send(type='sumbit') 送信
+    button#send(type="sumbit" v-if="!submitted()" v-on="click: submit()") 送信
+    span(v-if="text[status]") {{text[status]}}
