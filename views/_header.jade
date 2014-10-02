@@ -4,10 +4,10 @@
   img.slogan(src="img/slogan.svg")
 
   ul.menu
-    li.item: a(href="#news") ニュース
-    li.item: a(href="#about") 会社概要
-    li.item: a(href="#service") サービス
-    li.item: a(href="#access") アクセス
-    li.item: a(href="#contact") お問い合わせ
+    li.item: a(href="#news" v-on="click: open('news')") ニュース
+    li.item: a(href="#about" v-on="click: open('about')") 会社概要
+    li.item: a(href="#service" v-on="click: open('service')") サービス
+    li.item: a(href="#access" v-on="click: open('access')") アクセス
+    li.item: a(href="#contact" v-on="click: open('contact')") お問い合わせ
 
   #terminal

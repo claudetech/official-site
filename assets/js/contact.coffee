@@ -1,13 +1,15 @@
-$ ->
+App.initializeContactForm = ->
+  statusText =
+    inProgress: '送信中...'
+    done: 'メッセージを送信しました。'
+    failed: 'メッセージを送信できませんでした。'
   new Vue
     el: '.contact'
+    computed:
+      statusText: -> statusText[@status]
     data:
       form: {}
       status: 'initial'
-      text:
-        inProgress: '送信中...'
-        done: 'メッセージを送信しました。'
-        failed: 'メッセージを送信できませんでした。'
     methods:
       submit: (e) ->
         return if @submitted() || @isInvalid()

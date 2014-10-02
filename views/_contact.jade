@@ -21,4 +21,4 @@
 
   .button
     button#send(type="sumbit" v-if="!submitted()" v-on="click: submit()") 送信
-    span(v-if="text[status]") {{text[status]}}
+    span(v-if="statusText") {{statusText}}

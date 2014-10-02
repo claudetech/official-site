@@ -8,16 +8,20 @@ App.openPage = (page) ->
 App.closePage = ->
   $('.back, .header, .content').removeClass('opened')
 
-$ ->
+App.initializeHeader = ->
+  App.MainVue = new Vue
+    el: '.header'
+    data: {page: null}
+    methods:
+      opened: -> !_.isEmpty(page)
+      open: (page) -> App.openPage(page)
+      close: -> App.closePage()
+
+App.initialize = ->
   hash = window.location.hash.substr(1)
-  if(hash != '')
-    $('.back, .header').addClass('opened')
-    $(".content.#{hash}, .back").addClass('opened')
+  App.openPage hash unless _.isEmpty(hash)
+  App.initializeHeader()
+  App.initializeContactForm()
 
-  $('.logo').click (e) ->
-    e.preventDefault()
-    e.stopPropagation()
-    App.closePage()
-
-  $('.menu a').click (e) ->
-    App.openPage($(this).attr('href').substr(1))
+$ ->
+  App.initialize()
