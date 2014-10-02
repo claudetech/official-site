@@ -106,20 +106,26 @@ body
   &.contact
     #contact-form
       .field
-        field(left,)
-        margin:20px 0 0 20px
+        margin 20px 0 0 20px
+        label
+          display block
+          font-weight bold
+        label + p
+          padding-left 2em
         input, textarea
           input(, 400px)
         textarea
-          height:100px
-          resize:vertical
+          height 100px
+          resize vertical
+        &.body
+          margin-bottom 20px
     .button
-      width: 440px
+      width 440px
       button
         button(#17599a)
-        outline:0
-        display:block
-        margin:20px auto
+        outline 0
+        display block
+        margin 20px auto
 
 
 @media screen and (max-width: 1368px)
