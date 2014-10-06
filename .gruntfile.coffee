@@ -6,6 +6,14 @@ path       = require 'path'
 loremIpsum = require 'lorem-ipsum'
 _          = require 'lodash'
 
+extraConfigFile = '.leavesrc'
+
+extraConfig = {}
+if fs.existsSync extraConfigFile
+  extraConfig = JSON.parse fs.readFileSync(extraConfigFile, 'utf8')
+
+localesDir = extraConfig.i18n?.localesDir ? 'locales'
+
 lorem = (count, options={}) ->
   if typeof count == 'number'
     options.count = count
@@ -18,7 +26,7 @@ lorem = (count, options={}) ->
 cssFiles = [
   expand: true
   cwd: 'assets'
-  src: ['css/**/*.styl', '!css/**/_*. styl']
+  src: ['css/**/*.styl', '!css/**/_*.styl']
   dest: 'tmp'
   ext: '.css'
 ]
@@ -51,6 +59,34 @@ htmlFiles = [
 ]
 htmlDistFiles = [_.extend({}, htmlFiles[0], {dest: 'dist', cwd: 'dist'})]
 
+i18n = false
+
+i18nOptions =
+  tmp:
+    options:
+      baseDir: 'tmp'
+      outputDir: 'tmp'
+  dev: {}
+  dist: {}
+  options:
+    fileFormat: 'yml'
+    baseDir: 'dist'
+    outputDir: 'dist'
+    exclude: ['components/']
+    locales: []
+    locale: 'en'
+    localesPath: 'locales'
+
+if fs.existsSync i18nOptions.options.localesPath
+  files = fs.readdirSync i18nOptions.options.localesPath
+  unless _.isEmpty(files)
+    i18n = true
+    i18nOptions.options.locales = _.map files, (f) -> f.substring(0, f.lastIndexOf('.'))
+
+if extraConfig?.i18n?
+  _.merge i18nOptions.options, extraConfig.i18n
+
+Array::push.apply i18nOptions.options.exclude, _.map(i18nOptions.options.locales, (l) -> l + '/')
 
 module.exports = (grunt) ->
   require('load-grunt-tasks')(grunt)
@@ -66,7 +102,7 @@ module.exports = (grunt) ->
           event: ['changed']
       assetsGlob:
         files: ['assets/**/*', '!assets/css/**/*.styl', '!assets/js/**/*.coffee']
-        tasks: ['copy:tmpAssets', 'brerror:jade:tmp', 'glob:tmp']
+        tasks: ['copy:tmpAssets', 'views:tmp:true']
         options:
           event: ['added', 'deleted']
       coffee:
@@ -78,7 +114,7 @@ module.exports = (grunt) ->
       coffeeGlob:
         cwd: 'assets/js'
         files: 'assets/js/**/*.coffee'
-        tasks: ['brerror:newer:coffee:tmp', 'brerror:jade:tmp', 'glob:tmp']
+        tasks: ['brerror:newer:coffee:tmp', 'views:tmp:true']
         options:
           event: ['added', 'deleted']
       stylesheets:
@@ -90,13 +126,16 @@ module.exports = (grunt) ->
       stylesheetsGlob:
         cwd: 'assets/css'
         files: 'assets/css/**/*.styl'
-        tasks: ['brerror:newer:stylus:tmp', 'brerror:jade:tmp', 'glob:tmp']
+        tasks: ['brerror:newer:stylus:tmp', 'views:tmp:true']
         options:
           event: ['added', 'deleted']
       views:
         cwd: 'views'
         files: 'views/**/*.jade'
-        tasks: ['brerror:newer:jade:tmp', 'glob:tmp']
+        tasks: ['views:tmp:true:true']
+      locales:
+        files: "#{i18nOptions.options.localesPath}/**/*.#{i18nOptions.options.fileFormat}"
+        tasks: ['views:tmp:true']
       options:
         livereload: livereloadPort
 
@@ -122,7 +161,7 @@ module.exports = (grunt) ->
         files: cssDistFiles
       options:
         use: [
-          require 'axis-css'
+          require 'axis'
         ]
 
     jade:
@@ -223,6 +262,8 @@ module.exports = (grunt) ->
       options:
         incompatible: ['glob']
 
+    i18n: i18nOptions
+
 
   needsCompile = (file, baseFile, time, content) ->
     stat = fs.statSync file
@@ -250,15 +291,6 @@ module.exports = (grunt) ->
     filepath = path.join __dirname, mapFile(file)
     grunt.file.delete(filepath) if fs.existsSync filepath
 
-  compileTasks = (env) -> [
-    "clean:#{env}"
-    "makeCopy:#{env}"
-    "jade:#{env}"
-    "coffee:#{env}"
-    "stylus:#{env}"
-    "cdnify:#{env}"
-    "glob:#{env}"
-  ]
 
   grunt.registerTask 'makeCopy', (env) ->
     if env == 'tmp'
@@ -266,8 +298,29 @@ module.exports = (grunt) ->
     else
       grunt.task.run ["copy:dist"]
 
-  grunt.registerTask 'compile:tmp', compileTasks('tmp')
-  grunt.registerTask 'compile:dev', compileTasks('dev')
-  grunt.registerTask 'compile:dist', compileTasks('dist')
+
+  grunt.registerTask 'views', (env, brerror, useNewer) ->
+    prefixes = []
+    prefixes.push 'brerror' if brerror
+    prefixes.push 'newer' if useNewer
+    prefix = prefixes.join(':')
+    prefix += ':' unless _.isEmpty(prefix)
+    tasks = [
+      "#{prefix}jade:#{env}"
+      "cdnify:#{env}"
+      "glob:#{env}"
+    ]
+    tasks.push "i18n:#{env}" if i18n
+    grunt.task.run tasks
+
+
+  grunt.registerTask 'compile', 'Compiles the website', (env) ->
+    grunt.task.run [
+      "clean:#{env}"
+      "makeCopy:#{env}"
+      "coffee:#{env}"
+      "stylus:#{env}"
+      "views:#{env}"
+    ]
 
   grunt.registerTask 'default', ['compile:tmp', 'concurrent:start']

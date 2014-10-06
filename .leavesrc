@@ -11,5 +11,9 @@
             "provider": "ftp",
             "resetSettings": false
         }
+    },
+    "i18n": {
+        "locale": "ja",
+        "allowHtml": "true"
     }
 }

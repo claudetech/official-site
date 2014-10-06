@@ -1,0 +1,78 @@
+title:
+  news: ニュース
+  about: 会社概要
+  service: サービス
+  access: アクセス
+  contact: お問い合わせ
+
+news:
+  founded: 2014年8月26日　会社を設立しました。
+
+about:
+  name:
+    label: 社名
+    value: クロードテック株式会社
+  address:
+    label: 本社
+    value: |
+      〒114-0013
+      <br>
+      東京都北区東田端 2-3-1 第一アサカビル2階
+  president:
+    label: 代表者
+    value: 代表取締役社長　曽根岡 侑也
+  founded:
+    label: 設立
+    value: 2014年8月26日
+  capital:
+    label: 資本金
+    value: 300万円
+  occupation:
+    label: 事業内容
+    value: ソフトウェア開発
+
+team:
+  soneoka:
+    name: 曽根岡 侑也
+    email: soneoka@claudetech.com
+    bio: |
+      麻布高校、東京大学工学部システム創成卒業。
+      データマイニングの研究室に所属し、リクルートと共同研究しています。
+  daniel:
+    name: ペレズダニエル
+    email: daniel@claudetech.com
+    bio: |
+      ダニエルです。フランス生まれ育ちで、日本に住んでいる情報系の学生です。
+      プログラミング全般が大好きで、ウェブプログラミングでもLinuxのカーネル辺りの開発でも何でも楽しくやってます。
+  naito:
+    name: 内藤剛生
+    email: naito@claudetech.com
+    bio: |
+      エストニアのタリン工科大学修士課程在学中。
+      <br>
+      食べ物の好き嫌いはあまりありませんが和食のほうが好きです。
+      飲み物の好き嫌いは多少あって、果物から作ったお酒全般が苦手です。
+
+
+service:
+  coocreed: |
+   「現在の大学教育は学生のニーズとかけ離れている」<br>
+     ･･･そう思ったことはありませんか？
+     我々はWeb上で大学の問題点を集め、
+     賛同が得られているものから大学にかけあうことで、
+     学生主導で教育・設備・サービスを変えていきます。
+  leaves: |
+    NodeJSで実装された静的サイトジェネレータです。
+    強力なテンプレートエンジンやCSSライブラリを使用しており、
+    迅速なサイト制作をサポートします。
+
+contact:
+  subtitle: 楽しいお話、待ってます！
+  name: 名前
+  email: メールアドレス
+  content: お問い合わせ内容
+  submit: 送信
+  status:
+    inProgress: '送信中...'
+    done: 'メッセージを送信しました。'
+    failed: 'メッセージを送信できませんでした。'

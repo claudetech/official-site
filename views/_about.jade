@@ -1,49 +1,26 @@
 .content.about
-  h1 会社概要
+  h1(data-t) title.about
   table
-    tr
-      td 社名
-      td.
-        クロードテック株式会社<br>ClaudeTech. Inc.
-    tr
-      td 本社
-      td.
-        〒114-0013<br>
-        東京都北区東田端 2-3-1 第一アサカビル2階
-    tr
-      td 代表者
-      td 代表取締役社長　曽根岡 侑也
-    tr
-      td 設立
-      td 2014年8月26日
-    tr
-      td 資本金
-      td 300万円
-    tr
-      td 事業内容
-      td ソフトウェア開発
+    each k in ['name', 'address', 'president', 'founded', 'capital', 'occupation']
+      tr
+        td(data-t)= "about." + k + ".label"
+        td(data-t)= "about." + k + ".value"
 
   h1 チーム
   .member
     img.picture(src='http://res.cloudinary.com/hp9hvum2c/image/upload/c_scale,h_320/v1412236764/sone_gxi9dk.jpg')
-    .name 曽根岡 侑也
-    .email soneoka@claudetech.com
-    .bio.
-      麻布高校、東京大学工学部システム創成卒業。
-      データマイニングの研究室に所属し、リクルートと共同研究しています。
+    .name(data-t) team.soneoka.name
+    .email(data-t) team.soneoka.email
+    .bio(data-t) team.soneoka.bio
 
   .member
     img.picture(src="http://res.cloudinary.com/hp9hvum2c/image/upload/c_crop,g_north,h_400,w_200,x_43,y_0/v1412235399/daniel_aavlod_fargcm.jpg")
-    .name Perez Daniel
-    .email daniel@claudetech.com
-    .bio.
-      ダニエルです。フランス生まれ育ちで、日本に住んでいる情報系の学生です。
-      プログラミング全般が大好きで、ウェブプログラミングでもLinuxのカーネル辺りの開発でも何でも楽しくやってます。
+    .name(data-t) team.daniel.name
+    .email(data-t) team.daniel.email
+    .bio(data-t) team.daniel.bio
 
   .member
     img.picture(src='http://res.cloudinary.com/hp9hvum2c/image/upload/c_crop,h_490,w_245/v1408611118/naito_cnjz2d.jpg')
-    .name ナイトウ タカオ
-    .email naito@claudetech.com
-    .bio.
-      エストニアのタリン工科大学修士課程在学中。<br>食べ物の好き嫌いはあまりありませんが和食のほうが好きです。飲み物の好き嫌いは多少あって、果物から作ったお酒全般が苦手です。
-
+    .name(data-t) team.naito.name
+    .email(data-t) team.naito.email
+    .bio(data-t) team.naito.bio

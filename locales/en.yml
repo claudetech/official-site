@@ -1,0 +1,77 @@
+title:
+  news: News
+  about: About
+  service: Service
+  access: Access
+  contact: Contact
+
+news:
+  founded: 2014/8/26　The company has been founded.
+
+about:
+  name:
+    label: Company name
+    value: Claude Tech. Inc.
+  address:
+    label: Address
+    value: |
+      〒114-0013
+      <br>
+      Daiichi Asaka bldg. 2F
+      <br>
+      2-3-1 Higashi-Tabata Kita-ku Tokyo JAPAN
+  president:
+    label: President
+    value: Soneoka Yuya
+  founded:
+    label: Founded
+    value: 26 August 2014
+  capital:
+    label: Capital
+    value: 3000000 Yen
+  occupation:
+    label: Occupation
+    value: Software development
+
+team:
+  soneoka:
+    name: Yuya Soneoka
+    email: soneoka@claudetech.com
+    bio: |
+      Graduated from Tokyo University Faculty of Engineering
+      Doing research about data mining in collaboration with Recruit holdings.
+  daniel:
+    name: Daniel Perez
+    email: daniel@claudetech.com
+    bio: |
+      I was born and raised in France, and am now studying computer science in Japan.
+      I love programming in general. I like doing pretty much anything from web programming to having fun with the Linux kernel.
+  naito:
+    name: Takao Naito
+    email: naito@claudetech.com
+    bio: |
+      Master in computer science at Talin Institute of Technology
+
+service:
+  coocreed: |
+    CooCREED is a social platform to improve university education.
+    It is now introduced at Tokyo University to propose new ideas and
+    improvements to the university, and make education move forward.
+
+  leaves: |
+    Leaves is a productivity tool for frontend engineers and designers
+    built on NodeJS.
+    <br>
+    It has everything you need to create a static website or a single
+    page application in a flash.
+
+contact:
+  subtitle: We are waiting to hear from you!
+  name: Name
+  email: Email address
+  content: Body
+  submit: Send
+  status:
+    inProgress: Sending
+    done: Your message has been sent!
+    failed: We could not send your message.
