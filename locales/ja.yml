@@ -38,6 +38,7 @@ team:
     image: 'http://res.cloudinary.com/hp9hvum2c/image/upload/c_scale,h_320/v1412236764/sone_gxi9dk.jpg'
     bio: |
       麻布高校、東京大学工学部システム創成卒業。
+      <br>
       データマイニングの研究室に所属し、リクルートと共同研究しています。
   daniel:
     name: ペレズダニエル
