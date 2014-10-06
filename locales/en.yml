@@ -38,7 +38,8 @@ team:
     name: Yuya Soneoka
     email: soneoka@claudetech.com
     bio: |
-      Graduated from Tokyo University Faculty of Engineering
+      Graduated from Tokyo University Faculty of Engineering.
+      <br>
       Doing research about data mining in collaboration with Recruit holdings.
   daniel:
     name: Daniel Perez
