@@ -22,7 +22,7 @@ about:
       2-3-1 Higashi-Tabata Kita-ku Tokyo JAPAN
   president:
     label: President
-    value: Soneoka Yuya
+    value: Yuya Soneoka
   founded:
     label: Founded
     value: 26 August 2014
@@ -37,6 +37,7 @@ team:
   soneoka:
     name: Yuya Soneoka
     email: soneoka@claudetech.com
+    image: 'http://res.cloudinary.com/hp9hvum2c/image/upload/c_scale,h_320/v1412236764/sone_gxi9dk.jpg'
     bio: |
       Graduated from Tokyo University Faculty of Engineering.
       <br>
@@ -44,27 +45,35 @@ team:
   daniel:
     name: Daniel Perez
     email: daniel@claudetech.com
+    image: 'http://res.cloudinary.com/hp9hvum2c/image/upload/c_crop,g_north,h_400,w_200,x_43,y_0/v1412235399/daniel_aavlod_fargcm.jpg'
     bio: |
       I was born and raised in France, and am now studying computer science in Japan.
       I love programming in general. I like doing pretty much anything from web programming to having fun with the Linux kernel.
   naito:
     name: Takao Naito
     email: naito@claudetech.com
+    image: 'http://res.cloudinary.com/hp9hvum2c/image/upload/c_crop,h_490,w_245/v1408611118/naito_cnjz2d.jpg'
     bio: |
       Master in computer science at Talin Institute of Technology
 
 service:
-  coocreed: |
-    CooCREED is a social platform to improve university education.
-    It is now introduced at Tokyo University to propose new ideas and
-    improvements to the university, and make education move forward.
+  coocreed:
+    title: CooCREED
+    url: https://coocreed.jp
+    description: |
+      CooCREED is a social platform to improve university education.
+      It is now introduced at Tokyo University to propose new ideas and
+      improvements to the university, and make education move forward.
 
-  leaves: |
-    Leaves is a productivity tool for frontend engineers and designers
-    built on NodeJS.
-    <br>
-    It has everything you need to create a static website or a single
-    page application in a flash.
+  leaves:
+    title: Leaves
+    url: http://oss.claudetech.com/leaves
+    description: |
+      Leaves is a productivity tool for frontend engineers and designers
+      built on NodeJS.
+      <br>
+      It has everything you need to create a static website or a single
+      page application in a flash.
 
 contact:
   subtitle: We are waiting to hear from you!

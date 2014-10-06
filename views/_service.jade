@@ -1,12 +1,8 @@
 .content.service
   h1(data-t) title.service
   ul.services
-    li.service
-      h3.title CooCREED
-      .url: a(href="http://coocreed.jp" target="_blank") http://coocreed.jp
-      .text(data-t) service.coocreed
-
-    li.service
-      h3.title Leaves
-      .url: a(href="http://oss.claudetech.com/leaves" target="_blank") http://oss.claudetech.com/leaves
-      .text(data-t) service.leaves
+    each service in ['coocreed', 'leaves']
+      li.service
+        h3.title(data-t) service.#{service}.title
+        .url: a(data-t data-attr-t href-t="service.#{service}.url" target="_blank") service.#{service}.url
+        .text(data-t) service.#{service}.description

@@ -35,18 +35,21 @@ team:
   soneoka:
     name: 曽根岡 侑也
     email: soneoka@claudetech.com
+    image: 'http://res.cloudinary.com/hp9hvum2c/image/upload/c_scale,h_320/v1412236764/sone_gxi9dk.jpg'
     bio: |
       麻布高校、東京大学工学部システム創成卒業。
       データマイニングの研究室に所属し、リクルートと共同研究しています。
   daniel:
     name: ペレズダニエル
     email: daniel@claudetech.com
+    image: 'http://res.cloudinary.com/hp9hvum2c/image/upload/c_crop,g_north,h_400,w_200,x_43,y_0/v1412235399/daniel_aavlod_fargcm.jpg'
     bio: |
       ダニエルです。フランス生まれ育ちで、日本に住んでいる情報系の学生です。
       プログラミング全般が大好きで、ウェブプログラミングでもLinuxのカーネル辺りの開発でも何でも楽しくやってます。
   naito:
     name: 内藤剛生
     email: naito@claudetech.com
+    image: 'http://res.cloudinary.com/hp9hvum2c/image/upload/c_crop,h_490,w_245/v1408611118/naito_cnjz2d.jpg'
     bio: |
       エストニアのタリン工科大学修士課程在学中。
       <br>
@@ -55,16 +58,22 @@ team:
 
 
 service:
-  coocreed: |
-   「現在の大学教育は学生のニーズとかけ離れている」<br>
-     ･･･そう思ったことはありませんか？
-     我々はWeb上で大学の問題点を集め、
-     賛同が得られているものから大学にかけあうことで、
-     学生主導で教育・設備・サービスを変えていきます。
-  leaves: |
-    NodeJSで実装された静的サイトジェネレータです。
-    強力なテンプレートエンジンやCSSライブラリを使用しており、
-    迅速なサイト制作をサポートします。
+  coocreed:
+    title: CooCREED
+    url: https://coocreed.jp
+    description: |
+     「現在の大学教育は学生のニーズとかけ離れている」<br>
+       ･･･そう思ったことはありませんか？
+       我々はWeb上で大学の問題点を集め、
+       賛同が得られているものから大学にかけあうことで、
+       学生主導で教育・設備・サービスを変えていきます。
+  leaves:
+    title: Leaves
+    url: http://oss.claudetech.com/leaves
+    description: |
+      NodeJSで実装された静的サイトジェネレータです。
+      強力なテンプレートエンジンやCSSライブラリを使用しており、
+      迅速なサイト制作をサポートします。
 
 contact:
   subtitle: 楽しいお話、待ってます！

@@ -3,24 +3,13 @@
   table
     each k in ['name', 'address', 'president', 'founded', 'capital', 'occupation']
       tr
-        td(data-t)= "about." + k + ".label"
-        td(data-t)= "about." + k + ".value"
+        td(data-t) about.#{k}.label
+        td(data-t) about.#{k}.value
 
   h1 チーム
-  .member
-    img.picture(src='http://res.cloudinary.com/hp9hvum2c/image/upload/c_scale,h_320/v1412236764/sone_gxi9dk.jpg')
-    .name(data-t) team.soneoka.name
-    .email(data-t) team.soneoka.email
-    .bio(data-t) team.soneoka.bio
-
-  .member
-    img.picture(src="http://res.cloudinary.com/hp9hvum2c/image/upload/c_crop,g_north,h_400,w_200,x_43,y_0/v1412235399/daniel_aavlod_fargcm.jpg")
-    .name(data-t) team.daniel.name
-    .email(data-t) team.daniel.email
-    .bio(data-t) team.daniel.bio
-
-  .member
-    img.picture(src='http://res.cloudinary.com/hp9hvum2c/image/upload/c_crop,h_490,w_245/v1408611118/naito_cnjz2d.jpg')
-    .name(data-t) team.naito.name
-    .email(data-t) team.naito.email
-    .bio(data-t) team.naito.bio
+  each member in ['soneoka', 'daniel', 'naito']
+    .member
+      img.picture(data-attr-t src-t="team.#{member}.image")
+      .name(data-t) team.#{member}.name
+      .email(data-t) team.#{member}.email
+      .bio(data-t) team.#{member}.bio

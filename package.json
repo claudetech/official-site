@@ -24,6 +24,6 @@
         "lodash": "^2.4.1",
         "grunt-simple-cdnify": "^0.1.1",
         "axis": "^0.3.0",
-        "grunt-i18n-static": "^0.1.4"
+        "grunt-i18n-static": "^0.1.5"
     }
 }
