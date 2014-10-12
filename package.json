@@ -14,7 +14,7 @@
         "grunt-contrib-stylus": "^0.18.0",
         "grunt-contrib-watch": "^0.6.1",
         "grunt-contrib-clean": "^0.6.0",
-        "grunt-html-glob": "^0.2.0",
+        "grunt-html-glob": "^0.2.1",
         "grunt-newer": "^0.7.0",
         "grunt-brerror": "^0.1.4",
         "uglify-js": "^2.4.15",
@@ -22,8 +22,8 @@
         "grunt-cli": "^0.1.13",
         "lorem-ipsum": "^1.0.1",
         "lodash": "^2.4.1",
-        "grunt-simple-cdnify": "^0.1.1",
+        "grunt-simple-cdnify": "^0.1.2",
         "axis": "^0.3.0",
-        "grunt-i18n-static": "^0.1.5"
+        "grunt-i18n-static": "^0.1.8"
     }
 }

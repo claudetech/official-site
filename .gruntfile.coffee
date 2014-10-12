@@ -8,11 +8,23 @@ _          = require 'lodash'
 
 extraConfigFile = '.leavesrc'
 
-extraConfig = {}
-if fs.existsSync extraConfigFile
-  extraConfig = JSON.parse fs.readFileSync(extraConfigFile, 'utf8')
+defaults =
+  i18n:
+    localesDir: 'locales'
+  html:
+    ext: '.html'
+  css:
+    outdir: 'css'
+  js:
+    outdir: 'js'
 
-localesDir = extraConfig.i18n?.localesDir ? 'locales'
+extraConfig = defaults
+if fs.existsSync extraConfigFile
+  _.merge extraConfig, JSON.parse fs.readFileSync(extraConfigFile, 'utf8')
+extraConfig.dev = _.merge {}, _.omit(extraConfig, 'dev', 'dist'), extraConfig.dev
+extraConfig.dist = _.merge {}, _.omit(extraConfig, 'dev', 'dist'), extraConfig.dist
+
+capitalize = (s) -> s[0].toUpperCase() + s.substring(1)
 
 lorem = (count, options={}) ->
   if typeof count == 'number'
@@ -25,39 +37,43 @@ lorem = (count, options={}) ->
 
 cssFiles = [
   expand: true
-  cwd: 'assets'
-  src: ['css/**/*.styl', '!css/**/_*.styl']
-  dest: 'tmp'
+  cwd: 'assets/css'
+  src: ['**/*.styl', '!**/_*.styl']
+  dest: path.join 'tmp', extraConfig.dev.css.outdir
   ext: '.css'
 ]
-cssDistFiles = [_.extend({}, cssFiles[0], {dest: 'dist'})]
+cssDevFiles  = [_.extend {}, cssFiles[0], {dest: path.join('dist', extraConfig.dev.css.outdir)}]
+cssDistFiles = [_.extend {}, cssFiles[0], {dest: path.join('dist', extraConfig.dist.css.outdir)}]
 
 templateFiles = [
   expand: true
   cwd: 'views'
   src: ['**/*.jade', '!**/_*.jade', '!layout.jade']
   dest: 'tmp'
-  ext: '.html'
+  ext: extraConfig.dev.html.ext
 ]
-templateDistFiles = [_.extend({}, templateFiles[0], {dest: 'dist'})]
+templateDistFiles = [_.extend({}, templateFiles[0], {dest: 'dist', ext: extraConfig.dist.html.ext})]
+templateDevFiles = [_.extend({}, templateFiles[0], {dest: 'dist'})]
 
 coffeeFiles = [
   expand: true
-  cwd: 'assets'
-  src: ['js/**/*.coffee']
-  dest: 'tmp'
+  cwd: 'assets/js'
+  src: ['**/*.coffee']
+  dest: path.join 'tmp', extraConfig.dev.js.outdir
   ext: '.js'
 ]
-coffeeDistFiles = [_.extend({}, coffeeFiles[0], {dest: 'dist'})]
+coffeeDistFiles = [_.extend({}, coffeeFiles[0], {dest: path.join('dist', extraConfig.dist.js.outdir)})]
+coffeeDevFiles = [_.extend({}, coffeeFiles[0], {dest: path.join('dist', extraConfig.dev.js.outdir)})]
 
 htmlFiles = [
   expand: true
   cwd: 'tmp'
-  src: ['**/*.html']
+  src: ["**/*#{extraConfig.html.ext}", "!**/_*#{extraConfig.html.ext}"]
   dest: 'tmp'
-  ext: '.html'
+  ext: extraConfig.dev.html.ext
 ]
-htmlDistFiles = [_.extend({}, htmlFiles[0], {dest: 'dist', cwd: 'dist'})]
+htmlDistFiles = [_.extend({}, htmlFiles[0], {dest: 'dist', cwd: 'dist', ext: extraConfig.dist.html.ext})]
+htmlDevFiles = [_.extend({}, htmlFiles[0], {dest: 'dist', cwd: 'dist'})]
 
 i18n = false
 
@@ -75,7 +91,7 @@ i18nOptions =
     exclude: ['components/']
     locales: []
     locale: 'en'
-    localesPath: 'locales'
+    localesPath: extraConfig.i18n.localesDir
 
 if fs.existsSync i18nOptions.options.localesPath
   files = fs.readdirSync i18nOptions.options.localesPath
@@ -102,40 +118,40 @@ module.exports = (grunt) ->
           event: ['changed']
       assetsGlob:
         files: ['assets/**/*', '!assets/css/**/*.styl', '!assets/js/**/*.coffee']
-        tasks: ['copy:tmpAssets', 'views:tmp:true']
+        tasks: ['copy:tmpAssets', 'runViews:tmp:true']
         options:
           event: ['added', 'deleted']
       coffee:
         cwd: 'assets/js'
         files: 'assets/js/**/*.coffee'
-        tasks: ['brerror:newer:coffee:tmp']
+        tasks: ['runCoffee:tmp:true:true']
         options:
           event: ['changed']
       coffeeGlob:
         cwd: 'assets/js'
         files: 'assets/js/**/*.coffee'
-        tasks: ['brerror:newer:coffee:tmp', 'views:tmp:true']
+        tasks: ['runCoffee:tmp:true:true', 'runViews:tmp:true']
         options:
           event: ['added', 'deleted']
       stylesheets:
         cwd: 'assets/css'
         files: 'assets/css/**/*.styl'
-        tasks: ['brerror:newer:stylus:tmp']
+        tasks: ['runStylus:tmp:true:true']
         options:
           event: ['changed']
       stylesheetsGlob:
         cwd: 'assets/css'
         files: 'assets/css/**/*.styl'
-        tasks: ['brerror:newer:stylus:tmp', 'views:tmp:true']
+        tasks: ['runStylus:tmp:true:true', 'runViews:tmp:true']
         options:
           event: ['added', 'deleted']
       views:
         cwd: 'views'
         files: 'views/**/*.jade'
-        tasks: ['views:tmp:true:true']
+        tasks: ['runViews:tmp:true']
       locales:
         files: "#{i18nOptions.options.localesPath}/**/*.#{i18nOptions.options.fileFormat}"
-        tasks: ['views:tmp:true']
+        tasks: ['runViews:tmp:true']
       options:
         livereload: livereloadPort
 
@@ -143,7 +159,7 @@ module.exports = (grunt) ->
       tmp:
         files: coffeeFiles
       dev:
-        files: coffeeDistFiles
+        files: coffeeDevFiles
       dist:
         files: coffeeDistFiles
 
@@ -154,7 +170,7 @@ module.exports = (grunt) ->
         options:
           compress: false
       dev:
-        files: cssDistFiles
+        files: cssDevFiles
         options:
           compress: false
       dist:
@@ -170,14 +186,18 @@ module.exports = (grunt) ->
         options:
           pretty: true
       dev:
-        files: templateDistFiles
+        files: templateDevFiles
         options:
           pretty: true
       dist:
         files: templateDistFiles
+        options:
+          data:
+            dev: false
       options:
         data:
           lorem: lorem
+          dev: true
 
     connect:
       server:
@@ -194,7 +214,7 @@ module.exports = (grunt) ->
       tmpAssets:
         expand: true
         cwd: 'assets'
-        src: ['**/*', '!css/**/*.styl', '!js/**/*.coffee']
+        src: ['**/*', '!css', '!js', '!css/**/*.styl', '!js/**/*.coffee']
         dest: 'tmp'
       tmpComponents:
           expand: true
@@ -210,7 +230,7 @@ module.exports = (grunt) ->
         ,
           expand: true
           cwd: 'assets'
-          src: ['**/*', '!css/**/*.styl', '!js/**/*.coffee']
+          src: ['**/*', '!css', '!js', '!css/**/*.styl', '!js/**/*.coffee']
           dest: 'dist'
         ]
 
@@ -241,7 +261,7 @@ module.exports = (grunt) ->
       tmp:
         files: htmlFiles
       dev:
-        files: htmlDistFiles
+        files: htmlDevFiles
       dist:
         files: htmlDistFiles
         options:
@@ -254,7 +274,7 @@ module.exports = (grunt) ->
         options:
           useLocal: true
       dev:
-        files: htmlDistFiles
+        files: htmlDevFiles
         options:
           useLocal: true
       dist:
@@ -275,6 +295,7 @@ module.exports = (grunt) ->
     else
       return false if file == baseFile || stat.mtime > time
       filename = path.basename(file)
+      return false if filename[0] == '.'
       word = filename.substr(0, filename.lastIndexOf('.'))
       return true if content.indexOf(word) > -1
     return false
@@ -313,14 +334,40 @@ module.exports = (grunt) ->
     tasks.push "i18n:#{env}" if i18n
     grunt.task.run tasks
 
+  compileTasks = [
+    'clean'
+    'makeCopy'
+    'stylus'
+    'coffee'
+    'views'
+  ]
+
+  suffixedTasks = ['views']
+
+  _.each compileTasks, (task) ->
+    capTask = capitalize(task)
+    grunt.registerTask "run#{capTask}", (env, newer, brerror) ->
+      [prefix, suffix] = ['', '']
+      if task in suffixedTasks
+        suffix += ':true' if newer
+        suffix += ':true' if brerror
+      else
+        prefix += 'brerror:' if brerror
+        prefix += 'newer:' if newer
+      tasks = []
+      tasks.push "before#{capTask}:#{env}" if grunt.task.exists("before#{capTask}")
+      tasks.push "#{prefix}#{task}:#{env}#{suffix}"
+      tasks.push "after#{capTask}:#{env}" if grunt.task.exists("after#{capTask}")
+      grunt.task.run tasks
+
 
   grunt.registerTask 'compile', 'Compiles the website', (env) ->
-    grunt.task.run [
-      "clean:#{env}"
-      "makeCopy:#{env}"
-      "coffee:#{env}"
-      "stylus:#{env}"
-      "views:#{env}"
-    ]
+    tasks = _.map compileTasks, (t) -> "run#{capitalize(t)}:#{env}"
+    tasks.unshift "beforeCompile:#{env}" if grunt.task.exists("beforeCompile")
+    tasks.push "afterCompile:#{env}" if grunt.task.exists("afterCompile")
+    grunt.task.run tasks
 
   grunt.registerTask 'default', ['compile:tmp', 'concurrent:start']
+
+  if fs.existsSync('grunt.overrides.coffee') || fs.existsSync('grunt.overrides.js')
+    require('./grunt.overrides')(grunt, extraConfig)
