@@ -1,6 +1,6 @@
 {
     "project": {
-        "appname": "claudetech2",
+        "appname": "Claude Tech website",
         "options": {
             "css": "stylus",
             "html": "jade"
