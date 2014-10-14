@@ -1,0 +1,38 @@
+html
+  min-height:768px
+  min-width:840px
+  height:100%
+  position:relative
+  overflow:hidden
+
+body
+  background: url(../img/back.jpg) center center / cover no-repeat fixed
+
+.header, .content
+  float left
+  clearfix()
+
+
+.header
+  size 100% 100%
+
+  .logo
+    width 200px
+    absolute top 10% left 10%
+
+  .slogan
+    width 30%
+    absolute top 30% left 10%
+
+  .menu
+    absolute bottom 10% left 10%
+
+
+.back, .content
+  size:50% 100%
+  absolute: top 0 right -10px
+  background:white
+  overflow-y:scroll
+  &.opened
+    right: 0
+

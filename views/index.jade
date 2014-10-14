@@ -2,8 +2,14 @@ extends ./layout.jade
 
 block content
   .back
+
   include _news
   include _about
   include _service
   include _access
   include _contact
+
+  ul.language-selector
+    li: a(href="/en") English
+    li: a(href="/fr") Français
+    li: a(href="/") 日本語

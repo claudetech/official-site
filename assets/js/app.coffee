@@ -4,10 +4,12 @@ App.openPage = (page) ->
   $('.back, .header').addClass('opened')
   $('.content').removeClass('opened')
   $(".content.#{page}").addClass('opened')
+  $('.language-selector').addClass('opened')
   ga('send', 'pageview', page)
 
 App.closePage = ->
   $('.back, .header, .content').removeClass('opened')
+  $('.language-selector').removeClass('opened')
   ga('send', 'pageview', '/')
 
 App.initializeHeader = ->

@@ -1,0 +1,28 @@
+@media screen and (max-width: 1368px)
+  .back, .content
+    size:70% 100%
+
+  .header
+    &.opened
+      .logo
+        width: 12%
+        absolute:top 10% left 8%
+      .slogan
+        width:20%
+        absolute: top 30% left 5%
+
+@media screen and (max-width: 1024px)
+  .header
+    .slogan
+      width:40%
+    &.opened
+      .slogan
+        width:20%
+        absolute: top 30% left 5%
+
+@media screen and (max-height: 740px)
+  .menu
+    absolute:top 55% left 10%
+  .header .menu .item a
+    font-size: 1rem
+    line-height: 2rem
