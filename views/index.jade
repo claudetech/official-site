@@ -10,6 +10,6 @@ block content
   include _contact
 
   ul.language-selector
-    li: a(href="/en") English
+    li: a(href="/en" v-attr="href: '/en' + hash") English
     //- li: a(href="/fr") Français
-    li: a(href="/") 日本語
+    li: a(href="/" v-attr="href: '/' + hash") 日本語
