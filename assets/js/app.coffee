@@ -11,6 +11,7 @@ App.openPage = (page) ->
 App.closePage = ->
   $('.back, .header, .content').removeClass('opened')
   $('.language-selector').removeClass('opened')
+  App.LangVue.hash = ''
   ga('send', 'pageview', '/')
 
 App.initializeHeader = ->
