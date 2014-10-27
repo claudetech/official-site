@@ -1,12 +1,20 @@
 .content.about
   h1(data-t) title.about
+
+  h2 ミッションステートメント
+  p.mission-statement.
+    Claude Techという社名は、情報理論の父と呼ばれ、
+    コンピュータ技術の基礎を作り上げたClaude Shannon（クロード・シャノン）に由来しています。
+  p.mission-statement Claude Techは、決してお金儲けだけに傾倒することなく、技術ドリブンで新しい価値を創出することを目指します。
+
+  h2 概要
   table
     each k in ['name', 'address', 'president', 'founded', 'capital', 'occupation']
       tr
         td(data-t) about.#{k}.label
         td(data-t) about.#{k}.value
 
-  h1 役員紹介
+  h2 役員紹介
   each member in ['soneoka', 'daniel', 'naito']
     .member
       img.picture(data-attr-t src-t="team.#{member}.image")

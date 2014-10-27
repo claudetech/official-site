@@ -59,13 +59,34 @@ team:
     image: 'http://res.cloudinary.com/hp9hvum2c/image/upload/c_crop,h_490,w_245/v1408611118/naito_cnjz2d.jpg'
     bio: |
       1990年生まれ。東京理科大卒業。
-      大学在学中、エーテル株式会社にて、ソーシャルスケジュールサービス”Droppy”のフロント・バックエンド開発に従事。
       大学卒業後、エストニア・タリン工科大学大学院へ進学（現在、休学中）。
-      主にウェブ・モバイルのデザイン、マークアップを担当。
+      デザインディレクターとしてCIの制定や社内におけるデザインの全般を担当。
 
 
 
 service:
+  introduction: |
+    Claude Techは、Webサービス開発/企画力、データマイニング等の研究分野の知識を軸とした技術ドリブン企業です。
+    現在は「コンサルティング事業」と「Webサービス開発事業」をコアビジネスとして注力しています。
+    またビジネスとしてではなく、「あったらいいな」と思うようなWebサービスやプログラムを自由に開発・公開し、
+    オープンソースコミュニティへの積極的な貢献を社内では推奨しています。
+  consulting:
+    label: コンサルティング事業
+    value: Webサービス企画/開発力、データマイニング等の研究分野の知識を用いて、顧客企業の利潤最大化のお手伝いを行います。
+  webservice:
+    label: Webサービス事業
+    value: お客様のニーズを理解し、ITや人工知能を用いた企画立案から開発、運用まで行います。
+  claudelab:
+    label: Claude Lab
+    value: 「あったらいいな」「あったら面白いな」と思えるものを開発しています。
+  opensource:
+    label: オープンソース開発
+    value: |
+      自社で開発しているオープンソースソフトウェアです。
+      詳細は<a href="http://oss.claudetech.com/">こちら</a>
+  meetups:
+    label: 勉強会(<a href='http://meetups.claudetech.com/'>http://meetups.claudetech.com</a>)
+    value: 勉強会を主催しています。
   coocreed:
     title: CooCREED
     url: https://coocreed.jp
@@ -82,6 +103,9 @@ service:
       NodeJSで実装された静的サイトジェネレータです。
       強力なテンプレートエンジンやCSSライブラリを使用しており、
       迅速なサイト制作をサポートします。
+
+address:
+  station: JR山手線・京浜東北線「田端駅」北改札口より4分
 
 contact:
   subtitle: ご質問・ご相談、コンサルティングに関するお見積りなどお気軽にお問い合せください。

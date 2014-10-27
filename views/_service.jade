@@ -1,8 +1,21 @@
 .content.service
   h1(data-t) title.service
+  p.introduction(data-t) service.introduction
+  h2(data-t) service.webservice.label
+  p(data-t) service.webservice.value
   ul.services
     each service in ['coocreed', 'leaves']
       li.service
         h3.title(data-t) service.#{service}.title
         .url: a(data-t data-attr-t href-t="service.#{service}.url" target="_blank") service.#{service}.url
         .text(data-t) service.#{service}.description
+
+  h2(data-t) service.consulting.label
+  p(data-t) service.consulting.value
+
+  h2(data-t) service.claudelab.label
+  p(data-t) service.claudelab.value
+
+  h2(data-t) service.opensource.label
+  p(data-t) service.opensource.value
+
