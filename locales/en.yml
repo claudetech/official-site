@@ -17,7 +17,7 @@ about:
       <br>
       We are focused on creating new values through creative
       technological innovations.
-
+  general_info: General Information
   name:
     label: Company name
     value: Claude Tech. Inc.
@@ -43,6 +43,7 @@ about:
     value: Software development
 
 team:
+  label: Members
   soneoka:
     name: Yuya Soneoka
     email: soneoka@claudetech.com

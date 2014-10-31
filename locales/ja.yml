@@ -16,6 +16,7 @@ about:
       コンピュータ技術の基礎を作り上げたClaude Shannon（クロード・シャノン）に由来しています。
       <br><br>
       我々は、決してお金儲けだけに傾倒することなく、技術ドリブンで新しい価値を創出することを目指します。
+  general_info: 概要
   name:
     label: 社名
     value: クロードテック株式会社
@@ -39,6 +40,7 @@ about:
     value: ソフトウェア開発
 
 team:
+  label: 役員紹介
   soneoka:
     name: 曽根岡 侑也
     email: soneoka@claudetech.com
@@ -98,7 +100,7 @@ service:
     label: オープンソース開発
     value: |
       自社で開発しているオープンソースソフトウェアです。
-      詳細は<a href="https://github.com/claudetech">Claude TechのGithubへ</a>
+      詳細は、弊社の<a href="https://github.com/claudetech">Github</a>を参照ください。
   meetups:
     label: 勉強会(<a href='http://meetups.claudetech.com/'>http://meetups.claudetech.com</a>)
     value: 勉強会を主催しています。

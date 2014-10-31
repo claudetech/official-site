@@ -4,14 +4,14 @@
   h2(data-t) about.mission-statement.label
   p(data-t) about.mission-statement.value
 
-  h2 概要
+  h2(data-t) about.general_info
   table
     each k in ['name', 'address', 'president', 'founded', 'capital', 'occupation']
       tr
         td(data-t) about.#{k}.label
         td(data-t) about.#{k}.value
 
-  h2 役員紹介
+  h2(data-t) team.label
   each member in ['soneoka', 'daniel', 'naito']
     .member
       img.picture(data-attr-t src-t="team.#{member}.image")
