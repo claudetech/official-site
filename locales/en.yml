@@ -9,6 +9,15 @@ news:
   founded: 2014/8/26　The company has been founded.
 
 about:
+  mission-statement:
+    label: About Claude Tech
+    value: |
+      Claude Tech owns its name to the father of information
+      theory, Claude Shannon.
+      <br>
+      We are focused on creating new values through creative
+      technological innovations.
+
   name:
     label: Company name
     value: Claude Tech. Inc.
@@ -57,6 +66,46 @@ team:
       Master in computer science at Talin Institute of Technology
 
 service:
+  introduction: |
+    Claude Tech is a technology driven company and its main axises
+    are web service creation and planning mixed with data mining
+    and analysis.
+    Our current main businesses are consulting and web development.
+    <br>
+    We also develop products we really want, may they be or
+    not linked directly to our business.
+    We are also contributing as much as possible to the opensource
+    community, and which to contribute further as we grow.
+
+  consulting:
+    label: Consulting
+    value: |
+      We help our customers to realize their ideas and plans,
+      by planning and developping their products, as well as
+      analyizing their results. Please <a href="/#contact">contact us</a>
+      for more information.
+    web-consulting:
+      title: Web service planning and development
+      description: |
+        We try to have the best possible understanding of our client
+        to be able to help them all the way from thinking their service to
+        making it to reality.
+    data-consulting:
+      title: Data science consulting
+      description: |
+        We help our clients taking best profits of their data
+        using our data analysis technologies, including
+        machine learning and text mining. We also build
+        recommendation engines or business intelligence tools.
+
+  webservice:
+    label: Web service development
+    value: We are using our development skills to innovate and create new products and services.
+
+  claudelab:
+    label: Claude Lab
+    value: 'Products and services that we really want, may they be or not related to any kind of business'
+
   coocreed:
     title: CooCREED
     url: https://coocreed.jp
@@ -64,6 +113,14 @@ service:
       CooCREED is a social platform to improve university education.
       It is now introduced at Tokyo University to propose new ideas and
       improvements to the university, and make education move forward.
+
+  opensource:
+    label: Opensource
+    value: |
+      We want to contribute as much as possible to the
+      opensource community. Check out
+      <a href="https://github.com/claudetech">our Github</a>
+      to see what we are up to.
 
   leaves:
     title: Leaves
@@ -75,8 +132,13 @@ service:
       It has everything you need to create a static website or a single
       page application in a flash.
 
+address:
+  station: |
+    Yamanote Line/Keihin Tohoku Line, Tabata station<br>
+    4 minutes walking from north exit
+
 contact:
-  subtitle: We are waiting to hear from you!
+  subtitle: Feel free to contact us if you need any extra information
   name: Name
   email: Email address
   content: Body

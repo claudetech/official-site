@@ -81,11 +81,11 @@ service:
     label: コンサルティング事業
     value: |
       Webサービス企画/開発力、データマイニング等の研究分野の知識を用いて、顧客企業の課題解決をお手伝いします。
-      お問い合わせは<a href="/#contact">こちら</a> 
+      お問い合わせは<a href="/#contact">こちら</a>
     web-consulting:
       title: Webサービス企画/開発
       description: お客様のニーズを理解し、ITや人工知能を駆使した企画立案からWebサービス開発、運用まで行います。
-    data-consulting: 
+    data-consulting:
       title: データコンサルティング
       description: お客様が抱えるデータに対して、自社のデータ解析技術（機械学習、テキストマイニング等）を用いた活用方法のご提案から、推薦エンジンやBIツール等の実装まで行います。
   webservice:
@@ -98,7 +98,7 @@ service:
     label: オープンソース開発
     value: |
       自社で開発しているオープンソースソフトウェアです。
-      詳細は<a href="http://oss.claudetech.com/">こちら</a>
+      詳細は<a href="https://github.com/claudetech">Claude TechのGithubへ</a>
   meetups:
     label: 勉強会(<a href='http://meetups.claudetech.com/'>http://meetups.claudetech.com</a>)
     value: 勉強会を主催しています。
