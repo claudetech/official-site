@@ -6,22 +6,39 @@ title:
   contact: お問い合わせ
 
 news:
-  - date: 2014年5月23日
-    message: <a href="https://coocreed.jp/">あなたの声が東大を変える CooCREEDをリリースしました。</a>
-  - date: 2014年6月9日
-    message: <a href="https://www.ipa.go.jp/jinzai/mitou/2014/gaiyou_f-3.html">弊社の曽根岡とDanielが2014年度IPA未踏プロジェクトに採択されました。</a>
-  - date: 2014年7月4日
-    message: <a href="http://www.utnp.org/coocreed.html">CooCREEDの取り組みが東大新聞で取り上げられました。</a>
-  - date: 2014年8月26日
+  coocreed_release:
+    date: 2014年5月23日
+    message: あなたの声が東大を変える CooCREEDをリリースしました。
+    url: https://coocreed.jp/
+  mito:
+    date: 2014年6月9日
+    message: 弊社の曽根岡とDanielが2014年度IPA未踏プロジェクトに採択されました。
+    url: https://www.ipa.go.jp/jinzai/mitou/2014/gaiyou_f-3.html
+  coocred_news:
+    date: 2014年7月4日
+    message: CooCREEDの取り組みが東大新聞で取り上げられました。
+    url: http://www.utnp.org/coocreed.html
+  founded:
+    date: 2014年8月26日
     message: 弊社を設立しました。
-  - date: 2014年9月30日
-    message: <a href="http://oss.claudetech.com/leaves/">デザイナー・フロントエンドエンジニア用の開発ツール Leavesをリリースしました。</a>
-  - date: 2014年11月1日
-    message: <a href="http://hacker.goodfind.jp/">弊社のLeavesがHacker's League2014で優勝しました</a>
-  - date: 2015年2月1日
-    message: <a href="http://voisee.jp/">スマホアプリ型共創コミュニティ Voiseeのティザーサイトを公開しました</a> 
-  - date: 2015年2月21日
-    message: <a href="https://www.ipa.go.jp/jinzai/mitou/2014/seikahoukoku21th.html">弊社の曽根岡とDanielが第21回未踏事業成果報告会でVoiseeの発表をしました。</a>
+    url: https://www.facebook.com/claudetech
+  leaves_release:
+    date: 2014年9月30日
+    message: デザイナー・フロントエンドエンジニア用の開発ツール Leavesをリリースしました。
+    url: http://oss.claudetech.com/leaves/
+  hackers_league:
+    date: 2014年11月1日
+    message: 弊社のLeavesがHacker's League2014で優勝しました
+    url: http://hacker.goodfind.jp/
+  voisee_release:
+    date: 2015年2月1日
+    message: スマホアプリ型共創コミュニティ Voiseeのティザーサイトを公開しました
+    url: http://voisee.jp/
+  mito_presen:
+    date: 2015年2月21日
+    message: 弊社の曽根岡とDanielが第21回未踏事業成果報告会でVoiseeの発表をしました。
+    url: https://www.ipa.go.jp/jinzai/mitou/2014/seikahoukoku21th.html
+
 
 about:
   mission-statement:
@@ -158,3 +175,7 @@ contact:
     inProgress: '送信中...'
     done: 'メッセージを送信しました。'
     failed: 'メッセージを送信できませんでした。'
+
+
+misc:
+  link: リンク

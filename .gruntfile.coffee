@@ -1,9 +1,7 @@
-livereloadPort = 35729
-httpServerPort = 9000
-
 fs         = require 'fs'
 path       = require 'path'
 loremIpsum = require 'lorem-ipsum'
+dummyImage = require 'dummy-image'
 _          = require 'lodash'
 
 extraConfigFile = '.leavesrc'
@@ -17,6 +15,14 @@ defaults =
     outdir: 'css'
   js:
     outdir: 'js'
+  ports:
+    http: 9000
+    livereload: 35729
+  dir:
+    tmp: 'tmp'
+    dist: 'dist'
+  app:
+    singlePage: false
 
 extraConfig = defaults
 if fs.existsSync extraConfigFile
@@ -25,6 +31,28 @@ extraConfig.dev = _.merge {}, _.omit(extraConfig, 'dev', 'dist'), extraConfig.de
 extraConfig.dist = _.merge {}, _.omit(extraConfig, 'dev', 'dist'), extraConfig.dist
 
 capitalize = (s) -> s[0].toUpperCase() + s.substring(1)
+
+generatedImages = []
+
+dumimg = (dist, dir) ->
+  (options) ->
+    if _.isNumber(options) || _.isString(options)
+      [width, height, type, replace] = arguments
+      height = width unless height
+      options = {width: width, height: height, type: type, replace: replace}
+
+    return options.replace if options.replace? && dist
+
+    generated = _.find(generatedImages, options)
+    return generated.path if generated
+    generatedOptions = _.clone(options)
+    generatedImages.push(generatedOptions)
+
+    baseDir = path.join(__dirname, dir)
+    options.outputDir = path.join(baseDir, 'img', 'dummy')
+    fs.mkdirSync options.outputDir unless fs.existsSync options.outputDir
+    imgPath = dummyImage(options)
+    generatedOptions.path = path.relative(baseDir, imgPath)
 
 lorem = (count, options={}) ->
   if typeof count == 'number'
@@ -39,55 +67,55 @@ cssFiles = [
   expand: true
   cwd: 'assets/css'
   src: ['**/*.styl', '!**/_*.styl']
-  dest: path.join 'tmp', extraConfig.dev.css.outdir
+  dest: path.join extraConfig.dir.tmp, extraConfig.dev.css.outdir
   ext: '.css'
 ]
-cssDevFiles  = [_.extend {}, cssFiles[0], {dest: path.join('dist', extraConfig.dev.css.outdir)}]
-cssDistFiles = [_.extend {}, cssFiles[0], {dest: path.join('dist', extraConfig.dist.css.outdir)}]
+cssDevFiles  = [_.extend {}, cssFiles[0], {dest: path.join(extraConfig.dir.dist, extraConfig.dev.css.outdir)}]
+cssDistFiles = [_.extend {}, cssFiles[0], {dest: path.join(extraConfig.dir.dist, extraConfig.dist.css.outdir)}]
 
 templateFiles = [
   expand: true
   cwd: 'views'
   src: ['**/*.jade', '!**/_*.jade', '!layout.jade']
-  dest: 'tmp'
+  dest: extraConfig.dir.tmp
   ext: extraConfig.dev.html.ext
 ]
-templateDistFiles = [_.extend({}, templateFiles[0], {dest: 'dist', ext: extraConfig.dist.html.ext})]
-templateDevFiles = [_.extend({}, templateFiles[0], {dest: 'dist'})]
+templateDistFiles = [_.extend({}, templateFiles[0], {dest: extraConfig.dir.dist, ext: extraConfig.dist.html.ext})]
+templateDevFiles = [_.extend({}, templateFiles[0], {dest: extraConfig.dir.dist})]
 
 coffeeFiles = [
   expand: true
   cwd: 'assets/js'
   src: ['**/*.coffee']
-  dest: path.join 'tmp', extraConfig.dev.js.outdir
+  dest: path.join extraConfig.dir.tmp, extraConfig.dev.js.outdir
   ext: '.js'
 ]
-coffeeDistFiles = [_.extend({}, coffeeFiles[0], {dest: path.join('dist', extraConfig.dist.js.outdir)})]
-coffeeDevFiles = [_.extend({}, coffeeFiles[0], {dest: path.join('dist', extraConfig.dev.js.outdir)})]
+coffeeDistFiles = [_.extend({}, coffeeFiles[0], {dest: path.join(extraConfig.dir.dist, extraConfig.dist.js.outdir)})]
+coffeeDevFiles = [_.extend({}, coffeeFiles[0], {dest: path.join(extraConfig.dir.dist, extraConfig.dev.js.outdir)})]
 
 htmlFiles = [
   expand: true
-  cwd: 'tmp'
-  src: ["**/*#{extraConfig.html.ext}", "!**/_*#{extraConfig.html.ext}"]
-  dest: 'tmp'
+  cwd: extraConfig.dir.tmp
+  src: ["**/*#{extraConfig.html.ext}", "!**/_*#{extraConfig.html.ext}", "!components/**"]
+  dest: extraConfig.dir.tmp
   ext: extraConfig.dev.html.ext
 ]
-htmlDistFiles = [_.extend({}, htmlFiles[0], {dest: 'dist', cwd: 'dist', ext: extraConfig.dist.html.ext})]
-htmlDevFiles = [_.extend({}, htmlFiles[0], {dest: 'dist', cwd: 'dist'})]
+htmlDistFiles = [_.extend({}, htmlFiles[0], {dest: extraConfig.dir.dist, cwd: extraConfig.dir.dist, ext: extraConfig.dist.html.ext})]
+htmlDevFiles = [_.extend({}, htmlFiles[0], {dest: extraConfig.dir.dist, cwd: extraConfig.dir.dist})]
 
 i18n = false
 
 i18nOptions =
   tmp:
     options:
-      baseDir: 'tmp'
-      outputDir: 'tmp'
+      baseDir: extraConfig.dir.tmp
+      outputDir: extraConfig.dir.tmp
   dev: {}
   dist: {}
   options:
     fileFormat: 'yml'
-    baseDir: 'dist'
-    outputDir: 'dist'
+    baseDir: extraConfig.dir.dist
+    outputDir: extraConfig.dir.dist
     exclude: ['components/']
     locales: []
     locale: 'en'
@@ -147,13 +175,17 @@ module.exports = (grunt) ->
           event: ['added', 'deleted']
       views:
         cwd: 'views'
-        files: 'views/**/*.jade'
+        files: ['views/**/*.jade', 'views/**/*.{html,md}']
         tasks: ['runViews:tmp:true']
       locales:
         files: "#{i18nOptions.options.localesPath}/**/*.#{i18nOptions.options.fileFormat}"
         tasks: ['runViews:tmp:true']
+      dummy_images:
+        files: ['tmp/img/dummy/*']
       options:
-        livereload: livereloadPort
+        spawn: false
+        livereload:
+            port: extraConfig.ports.livereload
 
     coffee:
       tmp:
@@ -189,33 +221,57 @@ module.exports = (grunt) ->
         files: templateDevFiles
         options:
           pretty: true
+          data:
+            lorem: lorem
+            dev: true
+            dumimg: dumimg(false, extraConfig.dir.dist)
       dist:
         files: templateDistFiles
         options:
           data:
+            lorem: lorem
             dev: false
+            dumimg: dumimg(true, extraConfig.dir.dist)
       options:
         data:
           lorem: lorem
           dev: true
+          dumimg: dumimg(false, extraConfig.dir.tmp)
 
     connect:
       server:
         options:
-          port: httpServerPort
+          port: extraConfig.ports.http
           keepalive: true
           debug: true
-          base: 'tmp'
+          base: extraConfig.dir.tmp
           useAvailablePort: true
           open: true
-          livereload: true
+          livereload: extraConfig.ports.livereload
+          middleware: (connect, options, middlewares) ->
+            middlewares.push (req, res, next) ->
+              return next() unless req.headers['accept'].indexOf('text/html') >= 0
+              return next() unless extraConfig.app.singlePage
+
+              file = extraConfig.app.singlePage
+              file = 'index.html' unless path.extname(file) == '.html'
+              filepath = path.join(extraConfig.dir.tmp, file)
+              stat = fs.statSync filepath
+              res.writeHead 200,
+                'Content-Type': 'text/html'
+                'Content-Length': stat.size
+              res.write fs.readFileSync(filepath)
+              res.end()
+              next()
+
+            middlewares
 
     copy:
       tmpAssets:
         expand: true
         cwd: 'assets'
         src: ['**/*', '!css', '!js', '!css/**/*.styl', '!js/**/*.coffee']
-        dest: 'tmp'
+        dest: extraConfig.dir.tmp
       tmpComponents:
           expand: true
           cwd: '.components'
@@ -230,9 +286,20 @@ module.exports = (grunt) ->
         ,
           expand: true
           cwd: 'assets'
-          src: ['**/*', '!css', '!js', '!css/**/*.styl', '!js/**/*.coffee']
-          dest: 'dist'
+          src: ['**/*', '!css', '!js', '!css/**/*.styl', '!js/**/*.coffee', '!img/**/*.{png,jpg,gif}']
+          dest: extraConfig.dir.dist
         ]
+
+    imagemin:
+      dist:
+        files: [
+          expand: true
+          cwd: 'assets'
+          src: ['img/**/*.{png,jpg,gif}']
+          dest: extraConfig.dir.dist
+        ]
+      tmp: {}
+      dev: {}
 
     concurrent:
       start:
@@ -253,9 +320,9 @@ module.exports = (grunt) ->
           include(compile)
 
     clean:
-      tmp: ['tmp']
-      dist: ['dist']
-      dev: ['dist']
+      tmp: [extraConfig.dir.tmp]
+      dist: [extraConfig.dir.dist]
+      dev: [extraConfig.dir.dist]
 
     glob:
       tmp:
@@ -301,7 +368,7 @@ module.exports = (grunt) ->
     return false
 
   mapFile = (filepath) ->
-    filepath = filepath.replace /^(assets|views)/, 'tmp'
+    filepath = filepath.replace /^(assets|views)/, extraConfig.dir.tmp
     filepath = filepath.replace /\.styl$/, '.css'
     filepath = filepath.replace /\.coffee$/, '.js'
     filepath = filepath.replace /\.jade$/, '.html'
@@ -337,6 +404,7 @@ module.exports = (grunt) ->
   compileTasks = [
     'clean'
     'makeCopy'
+    'imagemin'
     'stylus'
     'coffee'
     'views'
@@ -358,6 +426,7 @@ module.exports = (grunt) ->
       tasks.push "before#{capTask}:#{env}" if grunt.task.exists("before#{capTask}")
       tasks.push "#{prefix}#{task}:#{env}#{suffix}"
       tasks.push "after#{capTask}:#{env}" if grunt.task.exists("after#{capTask}")
+      grunt.event.emit "#{task}.run", env
       grunt.task.run tasks
 
 
@@ -369,5 +438,7 @@ module.exports = (grunt) ->
 
   grunt.registerTask 'default', ['compile:tmp', 'concurrent:start']
 
-  if fs.existsSync('grunt.overrides.coffee') || fs.existsSync('grunt.overrides.js')
-    require('./grunt.overrides')(grunt, extraConfig)
+  if fs.existsSync('grunt.hooks.coffee') || fs.existsSync('grunt.hooks.js')
+    require('./grunt.hooks')(grunt, extraConfig)
+
+  grunt.event.emit 'loaded'

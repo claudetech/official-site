@@ -6,8 +6,38 @@ title:
   contact: Contact
 
 news:
-  - date: 2014/8/26
-    message: The company has been founded.
+  coocreed_release:
+    date: 2014/5/23
+    message: 'We released CooCREED, Tokyo University cocreation platform'
+    url: https://coocreed.jp/
+  mito:
+    date: 2014/6/9
+    message: Yuya and Daniel have been selected for Mito project.
+    url: https://www.ipa.go.jp/jinzai/mitou/2014/gaiyou_f-3.html
+  coocred_news:
+    date: 2014/7/4
+    message: CooCREED has been covered in Tokyo University journal.
+    url: http://www.utnp.org/coocreed.html
+  founded:
+    date: 2014/8/26
+    message: Claude Tech has been founded.
+    url: https://www.facebook.com/claudetech
+  leaves_release:
+    date: 2014/9/30
+    message: 'We released Leaves, a productivity tool for designers frontend engineers.'
+    url: http://oss.claudetech.com/leaves/
+  hackers_league:
+    date: 2014/11/1
+    message: Leaves received the highest award at the Hacker's League 2014
+    url: http://hacker.goodfind.jp/
+  voisee_release:
+    date: 2015/2/1
+    message: 'We released Voisee, a smartphone based cocreation plaftorm.'
+    url: http://voisee.jp/
+  mito_presen:
+    date: 2015/2/21
+    message: Yuya and Daniel presented Voisee at Mito 21st Final Report.
+    url: https://www.ipa.go.jp/jinzai/mitou/2014/seikahoukoku21th.html
 
 about:
   mission-statement:
@@ -149,3 +179,6 @@ contact:
     inProgress: Sending
     done: Your message has been sent!
     failed: We could not send your message.
+
+misc:
+  link: 'Link'

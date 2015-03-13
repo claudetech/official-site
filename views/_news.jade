@@ -1,11 +1,9 @@
+- events = ['coocreed_release', 'mito', 'coocred_news', 'founded', 'leaves_release', 'hackers_league', 'voisee_release', 'mito_presen']
+
 .content.news
   h1(data-t) title.news
-  each news in t('news')
+  each news in events
     p
-      span= news.date
-      span= news.message
-  //- p(data-t) news.mito-selection
-  //- p(data-t) news.coocreed
-  //- p(data-t) news.ut-paper 
-  //- p(data-t) news.founded
-  //- p(data-t) news.leaves-
+      span.date(data-t="news.#{news}.date")
+      span.message(data-t="news.#{news}.message")
+      | (<a class="link" data-t data-attr-t href-t="news.#{news}.url" target="_blank">misc.link</a>)
