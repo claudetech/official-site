@@ -2,8 +2,14 @@
 
 .content.news
   h1(data-t) title.news
-  each news in events
-    p
-      span.date(data-t="news.#{news}.date")
-      span.message(data-t="news.#{news}.message")
-      | (<a class="link" data-t data-attr-t href-t="news.#{news}.url" target="_blank">misc.link</a>)
+  table
+    tr
+      th.date misc.date
+      th misc.content
+      th misc.link
+    each news in events
+      tr
+        td.date(data-t="news.#{news}.date")
+        td.message(data-t="news.#{news}.message")
+        td.link:  a(data-t data-attr-t href-t="news.#{news}.url" target="_blank")
+          img(src="img/link.png" style="max-height:12px")
