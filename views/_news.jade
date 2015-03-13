@@ -1,3 +1,11 @@
 .content.news
   h1(data-t) title.news
-  p(data-t) news.founded
+  each news in t('news')
+    p
+      span= news.date
+      span= news.message
+  //- p(data-t) news.mito-selection
+  //- p(data-t) news.coocreed
+  //- p(data-t) news.ut-paper 
+  //- p(data-t) news.founded
+  //- p(data-t) news.leaves-

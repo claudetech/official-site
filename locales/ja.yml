@@ -6,7 +6,22 @@ title:
   contact: お問い合わせ
 
 news:
-  founded: 2014年8月26日　会社を設立しました。
+  - date: 2014年5月23日
+    message: <a href="https://coocreed.jp/">あなたの声が東大を変える CooCREEDをリリースしました。</a>
+  - date: 2014年6月9日
+    message: <a href="https://www.ipa.go.jp/jinzai/mitou/2014/gaiyou_f-3.html">弊社の曽根岡とDanielが2014年度IPA未踏プロジェクトに採択されました。</a>
+  - date: 2014年7月4日
+    message: <a href="http://www.utnp.org/coocreed.html">CooCREEDの取り組みが東大新聞で取り上げられました。</a>
+  - date: 2014年8月26日
+    message: 弊社を設立しました。
+  - date: 2014年9月30日
+    message: <a href="http://oss.claudetech.com/leaves/">デザイナー・フロントエンドエンジニア用の開発ツール Leavesをリリースしました。</a>
+  - date: 2014年11月1日
+    message: <a href="http://hacker.goodfind.jp/">弊社のLeavesがHacker's League2014で優勝しました</a>
+  - date: 2015年2月1日
+    message: <a href="http://voisee.jp/">スマホアプリ型共創コミュニティ Voiseeのティザーサイトを公開しました</a> 
+  - date: 2015年2月21日
+    message: <a href="https://www.ipa.go.jp/jinzai/mitou/2014/seikahoukoku21th.html">弊社の曽根岡とDanielが第21回未踏事業成果報告会でVoiseeの発表をしました。</a>
 
 about:
   mission-statement:
@@ -120,6 +135,15 @@ service:
       NodeJSで実装された静的サイトジェネレータです。
       強力なテンプレートエンジンやCSSライブラリを使用しており、
       迅速なサイト制作をサポートします。
+  voisee:
+    title: Voisee
+    url: http://voisee.jp/
+    description: |
+      飲食店に特化したスマホアプリ型共創コミュニティです。
+      お店ごとのスマホアプリが作成でき、
+      お客様とコミュニケーションを取り、リピータを育てられます。
+      また、ダッシュボードでは、Web上のお店に関する情報を全て収集・解析し、
+      お店の状況を深く知ることも出来ます。
 
 address:
   station: JR山手線・京浜東北線「田端駅」北改札口より4分

@@ -2,15 +2,16 @@
   h1(data-t) title.service
   p.introduction(data-t) service.introduction
 
-  h2(data-t) service.consulting.label
-  p(data-t) service.consulting.value
-  ul.services
-    each service in ['web-consulting','data-consulting']
-      li.service
-        h3.title(data-t) service.consulting.#{service}.title
-        .text(data-t) service.consulting.#{service}.description
+
   h2(data-t) service.webservice.label
   p(data-t) service.webservice.value
+  ul.services
+    each service in ['voisee']
+      li.service
+        h3.title(data-t) service.#{service}.title
+        .url: a(data-t data-attr-t href-t="service.#{service}.url" target="_blank") service.#{service}.url
+        .text(data-t) service.#{service}.description
+
 
   h2(data-t) service.claudelab.label
   p(data-t) service.claudelab.value
@@ -20,6 +21,14 @@
         h3.title(data-t) service.#{service}.title
         .url: a(data-t data-attr-t href-t="service.#{service}.url" target="_blank") service.#{service}.url
         .text(data-t) service.#{service}.description
+
+  h2(data-t) service.consulting.label
+  p(data-t) service.consulting.value
+  ul.services
+    each service in ['web-consulting','data-consulting']
+      li.service
+        h3.title(data-t) service.consulting.#{service}.title
+        .text(data-t) service.consulting.#{service}.description
 
   h2(data-t) service.opensource.label
   p(data-t) service.opensource.value

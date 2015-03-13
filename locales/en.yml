@@ -6,7 +6,8 @@ title:
   contact: Contact
 
 news:
-  founded: 2014/8/26　The company has been founded.
+  - date: 2014/8/26
+    message: The company has been founded.
 
 about:
   mission-statement:
