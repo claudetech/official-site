@@ -1,15 +1,10 @@
-- events = ['coocreed_release', 'mito', 'coocred_news', 'founded', 'leaves_release', 'hackers_league', 'voisee_release', 'mito_presen']
+- events = ['coocreed_release', 'mito', 'coocred_news', 'founded', 'leaves_release', 'hackers_league', 'juken_sapuri', 'voisee_release', 'mito_presen']
 
 .content.news
   h1(data-t) title.news
-  table
-    tr
-      th.date misc.date
-      th misc.content
-      th misc.link
+  table.news
     each news in events
       tr
         td.date(data-t="news.#{news}.date")
-        td.message(data-t="news.#{news}.message")
-        td.link:  a(data-t data-attr-t href-t="news.#{news}.url" target="_blank")
-          img(src="img/link.png" style="max-height:12px")
+        td.message
+          a(data-t data-attr-t href-t="news.#{news}.url" target="_blank") news.#{news}.message

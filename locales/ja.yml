@@ -7,36 +7,40 @@ title:
 
 news:
   coocreed_release:
-    date: 2014年5月23日
-    message: あなたの声が東大を変える CooCREEDをリリースしました。
+    date: 2014.05.23
+    message: あなたの声が東大を変える CooCREEDをリリースしました
     url: https://coocreed.jp/
   mito:
-    date: 2014年6月9日
-    message: 弊社の曽根岡とDanielが2014年度IPA未踏プロジェクトに採択されました。
+    date: 2014.06.09
+    message: 弊社の曽根岡とDanielが2014年度IPA未踏プロジェクトに採択されました
     url: https://www.ipa.go.jp/jinzai/mitou/2014/gaiyou_f-3.html
   coocred_news:
-    date: 2014年7月4日
-    message: CooCREEDの取り組みが東大新聞で取り上げられました。
+    date: 2014.07.04
+    message: CooCREEDの取り組みが東大新聞で取り上げられました
     url: http://www.utnp.org/coocreed.html
   founded:
-    date: 2014年8月26日
-    message: 弊社を設立しました。
+    date: 2014.08.26
+    message: 弊社を設立しました
     url: https://www.facebook.com/claudetech
   leaves_release:
-    date: 2014年9月30日
-    message: デザイナー・フロントエンドエンジニア用の開発ツール Leavesをリリースしました。
+    date: 2014.09.30
+    message: デザイナー・フロントエンドエンジニア用の開発ツール Leavesをリリースしました
     url: http://oss.claudetech.com/leaves/
   hackers_league:
-    date: 2014年11月1日
-    message: 弊社のLeavesがHacker's League2014で優勝しました
+    date: 2014.11.01
+    message: LeavesがHacker's League2014で優勝しました
     url: http://hacker.goodfind.jp/
+  juken_sapuri:
+    date: 2014.11.04
+    message: 弊社代表曽根岡のリクルートとの共同研究がプレスリリースされました
+    url: http://prtimes.jp/main/html/rd/p/000000062.000010032.html
   voisee_release:
-    date: 2015年2月1日
+    date: 2015.02.01
     message: スマホアプリ型共創コミュニティ Voiseeのティザーサイトを公開しました
     url: http://voisee.jp/
   mito_presen:
-    date: 2015年2月21日
-    message: 弊社の曽根岡とDanielが第21回未踏事業成果報告会でVoiseeの発表をしました。
+    date: 2015.02.21
+    message: 弊社の曽根岡とDanielが第21回未踏事業成果報告会でVoiseeの発表をしました
     url: https://www.ipa.go.jp/jinzai/mitou/2014/seikahoukoku21th.html
 
 
@@ -159,6 +163,7 @@ service:
       飲食店に特化したスマホアプリ型共創コミュニティです。
       お店ごとのスマホアプリが作成でき、
       お客様とコミュニケーションを取り、リピータを育てられます。
+      <br>
       また、ダッシュボードでは、Web上のお店に関する情報を全て収集・解析し、
       お店の状況を深く知ることも出来ます。
 
@@ -177,5 +182,4 @@ contact:
     failed: 'メッセージを送信できませんでした。'
 
 
-misc:
-  link: リンク
+
