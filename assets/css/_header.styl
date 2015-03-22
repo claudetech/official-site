@@ -1,8 +1,20 @@
+shorten-header()
+  padding-top 0.5em
+  padding-bottom 0.5em
+  background rgba(0,0,0,0.5)
+  .img
+    height 2em
+  .text
+    display none
+  ._menu li
+    margin-top 0
+
 header
   absolute fixed 0
-  width 100%
+  overflow hidden
   padding 2em 4em
   transition all 0.5s
+  width 100%
   z-index 10
   .logo
     height 3em
@@ -11,10 +23,10 @@ header
     margin-bottom 0
     li
       margin 0.5em 0 0 2em
-    a
-      color white
       font-size 1.2em
       font-weight bold
+    a
+      color white
       &:before, &:after
         border 1px solid rgba(#fff, 0)
         content " "
@@ -29,17 +41,18 @@ header
     .icon-globe
       relative top 2px
   &.scrolled
-    padding 0.5em 4em
-    background rgba(0,0,0,0.5)
-    .img
-      height 2em
-    .text
-      display none
-    ._menu li
-      margin-top 0
+    shorten-header()
 
   @media only screen and (max-width: 40em)
-    .logo .text
+    shorten-header()
+    padding 0.5em 2em
+    .logo.text
       display none
     ._menu li
-      margin-left 1em
+      font-size 0.9em
+      margin 0 0 0 1em
+
+  @media only screen and (min-width: 40em) and (max-width: 50em)
+    ._menu li
+      font-size 0.9em
+      margin 0.7em 0 0 1em
