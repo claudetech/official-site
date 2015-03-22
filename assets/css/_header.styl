@@ -1,0 +1,45 @@
+header
+  absolute fixed 0
+  width 100%
+  padding 2em 4em
+  transition all 0.5s
+  z-index 10
+  .logo
+    height 3em
+    transition all 0.5s
+  ._menu
+    margin-bottom 0
+    li
+      margin 0.5em 0 0 2em
+    a
+      color white
+      font-size 1.2em
+      font-weight bold
+      &:before, &:after
+        border 1px solid rgba(#fff, 0)
+        content " "
+        display block
+        margin 0 auto
+        width 0
+      &:hover:before, &:hover:after
+        border-color #fff
+        transition width 0.1s ease-out
+        width 100%
+
+    .icon-globe
+      relative top 2px
+  &.scrolled
+    padding 0.5em 4em
+    background rgba(0,0,0,0.5)
+    .img
+      height 2em
+    .text
+      display none
+    ._menu li
+      margin-top 0
+
+  @media only screen and (max-width: 40em)
+    .logo .text
+      display none
+    ._menu li
+      margin-left 1em

@@ -1,15 +1,38 @@
 extends ./layout.jade
 
 block content
-  .back
-
-  include _about
-  include _service
-  include _news
-  include _access
-  include _contact
-
-  ul.language-selector
-    li: a(href="/en" v-attr="href: '/en' + hash") English
-    //- li: a(href="/fr") Français
-    li: a(href="/" v-attr="href: '/' + hash") 日本語
+  include partials/_header
+  
+  main._top
+    ._hero(data-0="background-position:center 0px;" data-500="background-position:center -200px;")
+      img(src="img/slogan.svg")
+        
+    .row: .column.medium-6.medium-centered
+      p.text-center.intro
+        | We are focused on creating new values through creative technological innovations.
+        
+    .row._news
+      h2.head.text-center News
+      dl.row
+        dt.column.small-3.text-right 2015/02/21
+        dd.column.small-9
+          a.link(target="_blank" href="https://www.ipa.go.jp/jinzai/mitou/2014/seikahoukoku21th.html")
+            span.message Yuya and Daniel presented Voisee at Mito 21st Final Report.
+        dt.column.small-3.text-right 2015/02/01
+        dd.column.small-9
+          a.link(target="_blank" href="http://voisee.jp/")
+            span.message We released Voisee, a smartphone based cocreation plaftorm.
+        dt.column.small-3.text-right 2014/11/01
+        dd.column.small-9
+          a.link(target="_blank" href="http://hacker.goodfind.jp/")
+            span.message Leaves received the highest award at the Hacker's League 2014
+        dt.column.small-3.text-right 2014/09/30
+        dd.column.small-9
+          a.link(target="_blank" href="http://oss.claudetech.com/leaves/")
+            span.message We released Leaves, a productivity tool for designers frontend engineers.
+        dt.column.small-3.text-right 2014/08/26
+        dd.column.small-9
+          a.link(target="_blank" href="https://www.facebook.com/claudetech")
+            span.message CLAUDE TECH has been founded.
+        
+  include partials/_footer

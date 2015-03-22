@@ -1,136 +1,59 @@
 @import _global
-@import _layout
+@import _header
+@import _footer
 
-@import _terminal
 
-@import _media
+._hero
+  background: url(../img/back-blue.jpg) center 0 / cover no-repeat fixed;
+  height 100vh
+  max-height 860px
+  display flex
+  justify-content center
+  img
+    max-width 70%
+    width 500px
 
-.header
-  .menu
+._service
+  .item
+    padding 1em 0
+
+  .icon-web, .icon-data
+    font-size 1.4em
+    margin-right 0.5em
+    vertical-align middle
+  dl
+    padding 0 2em
+  img
+    border 4px solid white
+    box-shadow 0 0 1px rgba(0,0,0,0.5)
+
+._company
+  dd
+    padding-left 1em
+
+._members
+  .face
+    margin-bottom 1em
+  h5
     margin 0
-    padding 0
-    .item a
-      color white
-      text-decoration none
-      line-height 3rem
-      fs(1.2rem)
-      transition all 0.2s
-      &:hover
-        text-shadow 0 0 1px black, 0 0 10px white, 0 0 10px white
-
-.back, .content
-  opacity 0
-  &.opened
-    opacity 1
-    z-index 1
-    > *
-      opacity 1
+  address
+    font-size 0.9rem
+    line-height 2rem
 
 
-.content
-  padding 50px 80px 100px
-  line-height 30px
-  & > *:not(h1)
-    margin-left 30px
-  h1
-    fs(26px)
-    margin-top 60px
-    + h2
-      margin-top 30px
-  h2
-    fs(24px)
-    font-weight normal
-    border-left 5px solid #0054ab
-    padding-left 20px
-    margin-top 60px
-  h3
-    fs(20px)
-  p
-    margin 0 60px 0 60px
-    line-height 2em
+._contact
+  textarea
+    resize none
+    height 10em
 
+._members
+  display normal
 
-  &.about
-    td
-      padding 5px 20px
-      border 1px solid white
-      fs(15px)
-      &:nth-child(1)
-        background rgba(0,0,0,0.1)
-        width 20%
-        min-width 120px
-      &:nth-child(2)
-        background rgba(0,0,0,0.05)
-    .member
-      clearfix()
-      margin-bottom 30px
-      .picture
-        float left
-        size 80px 160px
-      .name, .email, .bio
-        float left
-        padding 0px 20px
-        width 75%
-      .name
-        bold()
-      .email
-        fs(13px)
-      .bio
-        fs(13px)
-        line-height 24px
+main > div
+  padding 2em 0
+  &:last-child
+    padding-bottom 5em
 
-  &.service
-    .services
-      margin-left 60px
-    li.service
-      margin-bottom 2em
-      .title
-        margin 0
-
-  &.contact
-    #contact-form
-      .field
-        margin 20px 0 0 20px
-        label
-          display block
-          font-weight bold
-        label + p
-          padding-left 2em
-        input, textarea
-          input(, 400px)
-        textarea
-          height 100px
-          resize vertical
-        &.body
-          margin-bottom 20px
-
-    .button
-      width 440px
-      button
-        button(#17599a)
-        outline 0
-        display block
-        margin 20px auto
-
-  &.news
-    tr
-      .date
-        margin-right 10px
-        font-size 14px
-        padding-right 20px
-      .message
-        margin-right 10px
-        font-size 14px
-
-.language-selector
-  absolute top 30px right 30px
-  z-index 2
-  li
-    float left
-    list-style-type none
-    margin-right 20px
-    a
-      color white
-
-  &.opened a
-    color #0074D9
+h2.head
+  line-height 0
+  margin-bottom 1.2em

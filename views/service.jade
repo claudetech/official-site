@@ -1,0 +1,55 @@
+extends ./layout.jade
+
+block content
+  include partials/_header
+  
+  main._service
+    ._head: .column.small-12.text-center
+      h1 Services
+
+    .row._introduction
+      .column.small-9.small-centered
+        p.text-center.intro
+          | Claude Tech is a technology driven company and its main axises are
+          | web service creation and planning mixed with data mining and analysis.<br>
+          | Our current main businesses are consulting and web development. 
+        p.text-center.intro
+          | We also develop products we really want, may they be or not linked directly to our
+          | business. We are also contributing as much as possible to the opensource community,
+          | and which to contribute further as we grow.
+        
+    .row._items: .column.small-12.large-9.small-centered
+      .row.item
+        h3 Web service develpment
+        p We are using our development skills to innovate and create new products and services.
+        .column.medium-7
+          dl
+            dt: a(href="http://voisee.jp") Voisee
+            dd= lorem(40)
+            dt: a(href="http://coocreed.jp") CooCREED
+            dd CooCREED is a social platform to improve university education. It is now introduced at University to propose new ideas and improvements to the university, and make education move forward.
+        .column.medium-5
+          img(src="img/services/voisee.png")
+      
+      .row.item: .column.small-12
+        h3 Consulting
+        p We help our customers to realize their ideas and plans, by planning and developping their products, as well as analyizing their results. Please contact us for more information.
+        dl
+          dt
+            i.icon-web
+            | Web service planning and development
+          dd We try to have the best possible understanding of our client to be able to help them all the way from thinking their service to making it to reality.
+          dt
+            i.icon-data
+            | Data science consulting
+          dd We help our clients taking best profits of their data using our data analysis technologies, including machine learning and text mining. We also build recommendation engines or business intelligence tools.
+      
+      .row.item: .column.small-12
+        h3 Open source
+        p We want to contribute as much as possible to the opensource community. Check out our Github to see what we are up to.
+        dl
+          dt: a(href="http://leaves.claudetech.com/") Leaves
+          dd Leaves is a productivity tool for frontend engineers and designers built on NodeJS. It has everything you need to create a static website or a single page application in a flash.
+    
+      
+  include partials/_footer

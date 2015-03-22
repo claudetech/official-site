@@ -1,23 +1,7 @@
 {
-  "name": "claudetech-corp-site",
-  "version": "0.1.0",
-  "homepage": "https://github.com/claudetech/claudetech-corp-site",
-  "authors": [
-    "Naito Takao <naito@claudetech.com>",
-    "Daniel Perez <daniel@claudetech.com>"
-  ],
+  "name": "claudetech-site",
   "private": true,
-  "license": "Proprietary",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
-  "dependencies": {
-    "lodash": "~2.4.1",
-    "jquery": "~2.1.1",
-    "vue": "~0.10.6"
-  }
+  "version": "0.1.0",
+  "dependencies": {},
+  "devDependencies": {}
 }

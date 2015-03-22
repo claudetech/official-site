@@ -1,0 +1,53 @@
+extends ./layout.jade
+
+block content
+  include partials/_header
+  
+  main
+    ._head: .column.small-12.text-center
+      h1 Company
+      
+    .row: .column.medium-6.medium-centered
+      p.text-center.intro
+        | CLAUDE TECH owns its name to the father of information theory, Claude Shannon.
+      
+    .row._company
+      dl.column.medium-5.address
+        dt Company name
+        dd CLAUDE TECH
+        dt President
+        dd Yuya Soneoka
+        dt Founded
+        dd 26 August 2014
+        dt Capital
+        dd 3,000,000 JPY
+        dt Address
+        dd 114-0013<br>Daiichi Asaka bldg. 2F<br>2-3-1 Higashi-Tabata, Kita-ku Tokyo, JAPAN
+        dt Access
+        dd Yamanote Line/Keihin Tohoku Line, Tabata station<br>4 minutes walking from north exit
+        
+      .column.medium-7.map
+        .overlay
+        | <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6476.844012715416!2d139.761043!3d35.740431!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188de846b25d1b%3A0xe2566d258ffa3177!2s2+Chome-3-1+Higashitabata%2C+Kita-ku%2C+T%C5%8Dky%C5%8D-to+114-0013!5e0!3m2!1sen!2sjp!4v1426758551708" width="100%" height="460" frameborder="0" style="border:0"></iframe>
+        
+    .row._members
+      h2.head.text-center Our team
+      .column.medium-4
+        img.face(src="img/team/soneoka.jpg")
+        h5 Yuya Soneoka
+        address soneoka@claudetech.com
+        p Graduated from Tokyo University Faculty of Engineering. 
+        p Doing research about data mining in collaboration with Recruit holdings.
+      .column.medium-4
+        img.face(src="img/team/daniel.jpg")
+        h5 Daniel Perez
+        address daniel@claudetech.com
+        p I was born and raised in France, and am now studying computer science in Japan. I love programming in general. I like doing pretty much anything from web programming to having fun with the Linux kernel.
+      .column.medium-4
+        img.face(src="img/team/naito.jpg")
+        h5 Takao Naito
+        address naito@claudetech.com
+        p I am a designer and engineer. Fascinated by design, colors and minimalist interface. I am on master degree in Tallinn University of Technology, Estonia. I also pursue my passion for traveling and drinking.
+         
+        
+  include partials/_footer
