@@ -1,5 +1,20 @@
 news:
   label: News
+  2015/02/21:
+    url: https://www.ipa.go.jp/jinzai/mitou/2014/seikahoukoku21th.html
+    head: Yuya and Daniel presented Voisee at Mito 21st Final Report.
+  2015/02/01:
+    url: http://voisee.jp/
+    head: We released Voisee, a smartphone based cocreation plaftorm.
+  2014/11/01:
+    url: http://hacker.goodfind.jp/
+    head: Leaves received the highest award at the Hacker's League 2014
+  2014/09/30:
+    url: http://oss.claudetech.com/leaves/
+    head: We released Leaves, a productivity tool for designers frontend engineers.
+  2014/08/26:
+    url: https://www.facebook.com/claudetech
+    head: Claude Tech has been founded.
 
 company:
   label: Company
@@ -32,7 +47,7 @@ company:
       Yamanote Line/Keihin Tohoku Line, Tabata station<br>
       4 minutes walking from north exit
   team:
-    label: メンバー
+    label: Our team
     soneoka:
       name: Yuya Soneoka
       bio: |

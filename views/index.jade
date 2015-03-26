@@ -14,25 +14,9 @@ block content
     .row.news
       h2.head.text-center(data-t) news.label
       dl.row
-        dt.column.small-3.text-right 2015/02/21
-        dd.column.small-9
-          a.link(target="_blank" href="https://www.ipa.go.jp/jinzai/mitou/2014/seikahoukoku21th.html")
-            span.message Yuya and Daniel presented Voisee at Mito 21st Final Report.
-        dt.column.small-3.text-right 2015/02/01
-        dd.column.small-9
-          a.link(target="_blank" href="http://voisee.jp/")
-            span.message We released Voisee, a smartphone based cocreation plaftorm.
-        dt.column.small-3.text-right 2014/11/01
-        dd.column.small-9
-          a.link(target="_blank" href="http://hacker.goodfind.jp/")
-            span.message Leaves received the highest award at the Hacker's League 2014
-        dt.column.small-3.text-right 2014/09/30
-        dd.column.small-9
-          a.link(target="_blank" href="http://oss.claudetech.com/leaves/")
-            span.message We released Leaves, a productivity tool for designers frontend engineers.
-        dt.column.small-3.text-right 2014/08/26
-        dd.column.small-9
-          a.link(target="_blank" href="https://www.facebook.com/claudetech")
-            span.message Claude Tech has been founded.
+        each k in ['2015/02/21', '2015/02/01', '2014/11/01', '2014/09/30', '2014/08/26']
+          dt.column.small-3.text-right #{k}
+          dd.column.small-9
+            a.link(target="_blank" href-t="news.#{k}.url"): span.message news.#{k}.head
         
   include partials/_footer

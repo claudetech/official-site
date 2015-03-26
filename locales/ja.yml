@@ -1,5 +1,20 @@
 news:
   label: ニュース
+  2015/02/21:
+    url: https://www.ipa.go.jp/jinzai/mitou/2014/seikahoukoku21th.html
+    head: 弊社の曽根岡とDanielが第21回未踏事業成果報告会でVoiseeの発表をしました
+  2015/02/01:
+    url: http://voisee.jp/
+    head: スマホアプリ型共創コミュニティ Voiseeのティザーサイトを公開しました
+  2014/11/01:
+    url: http://hacker.goodfind.jp/
+    head: LeavesがHacker's League2014で優勝しました
+  2014/09/30:
+    url: http://oss.claudetech.com/leaves/
+    head: デザイナー・フロントエンドエンジニア用の開発ツール Leavesをリリースしました
+  2014/08/26:
+    url: https://www.facebook.com/claudetech
+    head: 弊社を設立しました
 
 company:
   label: 会社概要

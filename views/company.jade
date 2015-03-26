@@ -12,39 +12,21 @@ block content
       
     .row.info
       dl.column.medium-5.address
-        dt(data-t) company.name.label
-        dd(data-t) company.name.value
-        dt(data-t) company.president.label
-        dd(data-t) company.president.value
-        dt(data-t) company.founded.label
-        dd(data-t) company.founded.value
-        dt(data-t) company.capital.label
-        dd(data-t) company.capital.value
-        dt(data-t) company.address.label
-        dd(data-t) company.address.value
-        dt(data-t) company.access.label
-        dd(data-t) company.access.value
+        each k in ['name', 'president', 'founded', 'capital', 'address', 'access']
+          dt(data-t) company.#{k}.label
+          dd(data-t) company.#{k}.value
         
       .column.medium-7.map
         | <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6476.844012715416!2d139.761043!3d35.740431!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188de846b25d1b%3A0xe2566d258ffa3177!2s2+Chome-3-1+Higashitabata%2C+Kita-ku%2C+T%C5%8Dky%C5%8D-to+114-0013!5e0!3m2!1sen!2sjp!4v1426758551708" width="100%" height="460" frameborder="0" style="border:0"></iframe>
         
     .row.members
       h2.head.text-center(data-t) company.team.label
-      .column.medium-4
-        img.face(src="img/team/soneoka.jpg")
-        h5(data-t) company.team.soneoka.name
-        address soneoka@claudetech.com
-        p(data-t) company.team.soneoka.bio
-      .column.medium-4
-        img.face(src="img/team/daniel.jpg")
-        h5(data-t) company.team.daniel.name
-        address daniel@claudetech.com
-        p(data-t) company.team.daniel.bio
-      .column.medium-4
-        img.face(src="img/team/naito.jpg")
-        h5 Takao Naito
-        address naito@claudetech.com
-        p(data-t) company.team.naito.bio
+      each k in ['soneoka', 'daniel', 'naito']
+        .column.medium-4
+          img.face(src="img/team/#{k}.jpg")
+          h5(data-t) company.team.#{k}.name
+          address #{k}@claudetech.com
+          p(data-t) company.team.#{k}.bio
          
         
   include partials/_footer
