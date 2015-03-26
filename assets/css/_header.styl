@@ -11,7 +11,6 @@ shorten-header()
 
 header
   absolute fixed 0
-  overflow hidden
   padding 2em 4em
   transition all 0.5s
   width 100%
@@ -25,6 +24,8 @@ header
       margin 0.5em 0 0 2em
       font-size 1.2em
       font-weight bold
+      position relative
+      display inline-block
     a.decorated
       color white
       &:before, &:after
@@ -41,6 +42,42 @@ header
     .icon-globe
       color white
       relative top 4px
+
+    .dropdown
+      margin 0
+      padding 0 0 1em 2em
+      ul
+        transition all 0.1s ease-out
+        opacity 0
+        display none
+        background white
+        list-style-type none
+        border-radius 0.3em
+        absolute top 2.5em right -1em
+        &:before
+          size 0 0
+          border-left 0.5em solid transparent
+          border-right 0.5em solid transparent
+          border-bottom 0.5em solid white
+          content ''
+          absolute top -0.5em right 1.1em
+        li
+          margin 0
+          padding 0
+          + li:last-child
+            border-top 1px solid #eee
+        a
+          display block
+          font-size 0.8em
+          padding 0.5em 1.6em
+          font-weight normal
+          size 100% 100%
+      &:hover ul
+        display inline-block
+        opacity 1
+        li:hover a
+          color #222
+
 
   &.scrolled
     shorten-header()

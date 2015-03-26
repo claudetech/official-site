@@ -1,0 +1,11 @@
+news:
+  label: News
+
+services:
+  label: Services
+
+company:
+  label: Company
+
+contact:
+  label: Contact

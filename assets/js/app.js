@@ -1,6 +1,5 @@
 $(document).ready(function(){
   skrollr.init({forceHeight: false});
-  $(document).foundation();
 });
 
 $(document).on('scroll', function(){

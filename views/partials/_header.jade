@@ -2,13 +2,12 @@ header
   a.left(href="/")
     img.logo.img.left(src="img/logo-img.png")
     img.logo.text.left(src="img/logo-text.png")
-  nav: ul.right.text-right.inline-list._menu
-    li: a.decorated(href= dev ? "services.html" : "services") Services
-    li: a.decorated(href= dev ? "company.html" : "company") Company
-    li: a.decorated(href= dev ? "contact.html" : "contact") Contact
-    li: a(data-dropdown="dropdown"): i.icon-globe
-      
-  ul#dropdown.f-dropdown(data-dropdown-content="")
-    li: a(href="/") English
-    li: a(href="/ja") 日本語
-    li: a(href="/fr") Français
+  nav: ul.right.text-right._menu
+    li: a.decorated(href= dev ? "services.html" : "services" data-t) services.label
+    li: a.decorated(href= dev ? "company.html" : "company" data-t) company.label
+    li: a.decorated(href= dev ? "contact.html" : "contact" data-t) contact.label
+    li.dropdown
+      i.icon-globe 
+      ul
+        li: a.text-right(href="/") English
+        li: a.text-right(href="/ja/") 日本語

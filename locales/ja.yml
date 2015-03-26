@@ -1,0 +1,11 @@
+news:
+  label: ニュース
+
+services:
+  label: サービス
+
+company:
+  label: 会社概要
+
+contact:
+  label: お問い合わせ
