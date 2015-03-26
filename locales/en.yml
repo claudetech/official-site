@@ -36,10 +36,8 @@ company:
   address:
     label: Address
     value: |
-      114-0013
-      <br>
-      Daiichi Asaka bldg. 2F
-      <br>
+      114-0013<br>
+      Daiichi Asaka bldg. 2F<br>
       2-3-1 Higashi-Tabata Kita-ku Tokyo JAPAN
   access:
     label: Access
