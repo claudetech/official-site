@@ -3,9 +3,77 @@ news:
 
 services:
   label: Services
+  introduction1: |
+    Claude Tech is a technology driven company and its main axises
+    are web service creation and planning mixed with data mining
+    and analysis.
+    Our current main businesses are consulting and web development.
+  introduction2: |
+    We also develop products we really want, may they be or
+    not linked directly to our business.
+    We are also contributing as much as possible to the opensource
+    community, and which to contribute further as we grow.
+
+  webservice:
+    label: Web service development
+    value: We are using our development skills to innovate and create new products and services.
+    voisee:
+      description: |
+        lorem ipsum bla bla blah
+      dashboard: Voisee Dashboard
+    coocreed:
+      description: |
+        CooCREED is a social platform to improve university education.
+        It is now introduced at Tokyo University to propose new ideas and
+        improvements to the university, and make education move forward.
+
+  consulting:
+    label: Consulting
+    value: |
+      We help our customers to realize their ideas and plans,
+      by planning and developping their products, as well as
+      analyizing their results. Please <a href="/contact">contact us</a>
+      for more information.
+    web-consulting:
+      title: Web service planning and development
+      description: |
+        We try to have the best possible understanding of our client
+        to be able to help them all the way from thinking their service to
+        making it to reality.
+    data-consulting:
+      title: Data science consulting
+      description: |
+        We help our clients taking best profits of their data
+        using our data analysis technologies, including
+        machine learning and text mining. We also build
+        recommendation engines or business intelligence tools.
+
+  opensource:
+    label: Opensource
+    value: |
+      We want to contribute as much as possible to the
+      opensource community. Check out
+      <a href="https://github.com/claudetech">our Github</a>
+      to see what we are up to.
+    leaves:
+      description: |
+        Leaves is a productivity tool for frontend engineers and designers
+        built on NodeJS.
+        <br>
+        It has everything you need to create a static website or a single
+        page application in a flash.
 
 company:
   label: Company
 
 contact:
   label: Contact
+  subtitle: Feel free to contact us if you need any extra information
+  name: Name
+  email: Email address
+  content: Body
+  submit: Send
+  status:
+    inProgress: Sending
+    done: Your message has been sent!
+    failed: We could not send your message.
