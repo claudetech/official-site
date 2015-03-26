@@ -1,10 +1,9 @@
 header
-  a.left(href="index.html")
+  a.left(href="/")
     img.logo.img.left(src="img/logo-img.png")
     img.logo.text.left(src="img/logo-text.png")
   nav: ul.right.text-right.inline-list._menu
-    li: a(href="services.html") Services
-    li: a(href="company.html") Company
-    li: a(href="contact.html") Contact
-    li: i.icon-globe
-    
+    li: a(href= dev ? "services.html" : "services") Services
+    li: a(href= dev ? "company.html" : "company") Company
+    li: a(href= dev ? "contact.html" : "contact") Contact
+    //- li: i.icon-globe

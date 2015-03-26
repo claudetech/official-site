@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  skrollr.init();
+  skrollr.init({forceHeight: false});
 });
 
 $(document).on('scroll', function(){
