@@ -2,64 +2,7 @@
 @import _header
 @import _footer
 
-
-._hero
-  background url(../img/back-blue.jpg) center 0 / cover no-repeat scroll;
-  height 100vh
-  max-height 860px
-  display flex
-  justify-content center
-  img
-    max-width 70%
-    width 500px
-
-._blog-hero
-  background url(../img/blog-back.jpg) center center / cover no-repeat fixed;
-  height 100px
-
-._service
-  .item
-    padding 1em 0
-
-  .icon-web, .icon-data
-    font-size 1.4em
-    margin-right 0.5em
-    vertical-align middle
-  dl
-    padding 0 2em
-  img
-    border 4px solid white
-    box-shadow 0 0 1px rgba(0,0,0,0.5)
-
-._company
-  dd
-    padding-left 1em
-
-._members
-  .face
-    margin-bottom 1em
-  h5
-    margin 0
-  address
-    font-size 0.9rem
-    line-height 2rem
-
-
-._contact
-  textarea
-    resize none
-    height 10em
-
-._members
-  display normal
-
-main > div
-  padding 2em 0
-  &:first-child
-    padding-top 0
-  &:last-child
-    padding-bottom 5em
-
-h2.head
-  line-height 0
-  margin-bottom 1.2em
+@import _top
+@import _services
+@import _company
+@import _contact

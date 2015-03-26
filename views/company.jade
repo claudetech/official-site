@@ -3,15 +3,15 @@ extends ./layout.jade
 block content
   include partials/_header
   
-  main
-    ._head: .column.small-12.text-center
+  main._company
+    ._page-header: .column.small-12.text-center
       h1 Company
       
     .row: .column.medium-6.medium-centered
       p.text-center.intro
         | CLAUDE TECH owns its name to the father of information theory, Claude Shannon.
       
-    .row._company
+    .row._company-info
       dl.column.medium-5.address
         dt Company name
         dd CLAUDE TECH
@@ -30,7 +30,7 @@ block content
         .overlay
         | <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6476.844012715416!2d139.761043!3d35.740431!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188de846b25d1b%3A0xe2566d258ffa3177!2s2+Chome-3-1+Higashitabata%2C+Kita-ku%2C+T%C5%8Dky%C5%8D-to+114-0013!5e0!3m2!1sen!2sjp!4v1426758551708" width="100%" height="460" frameborder="0" style="border:0"></iframe>
         
-    .row._members
+    .row.members
       h2.head.text-center Our team
       .column.medium-4
         img.face(src="img/team/soneoka.jpg")

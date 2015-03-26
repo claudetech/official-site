@@ -3,24 +3,29 @@ extends ./layout.jade
 block content
   include partials/_header
   
-  main
-    ._head: .column.small-12.text-center
+  main._contact
+    ._page-header: .column.small-12.text-center
       h1 Contact
       
     .row: .column.medium-12.medium-centered
       p.text-center.intro Feel free to contact us if you need any extra information.
       
-    ._contact: form
-      .row: label.column.small-8.small-centered
+    form#contact-form
+      .row: label.column.small-11.medium-8.small-centered
         | Name
-        input(type="text")
-      .row: label.column.small-8.small-centered
+        input#name(type="text")
+      .row: label.column.small-11.medium-8.small-centered
         | Email
-        input(type="email")
-      .row: label.column.small-8.small-centered
+        input#email(type="email")
+      .row: label.column.small-11.medium-8.small-centered
         | Body
-        textarea
-      .row.text-center: input.button.info.small.radius(type="submit")
+        textarea#message
+      .row.text-center: input#submit.button.info.small.radius(type="submit")
+        
+    p#response.text-center
 
         
   include partials/_footer
+  
+  script(src="http://www.parsecdn.com/js/parse-1.2.16.min.js")
+  script(src="js/emailer.js")
