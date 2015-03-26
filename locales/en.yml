@@ -125,3 +125,6 @@ contact:
     inProgress: Sending
     done: Your message has been sent!
     failed: We could not send your message.
+
+misc:
+  home: Home
