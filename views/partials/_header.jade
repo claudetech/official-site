@@ -3,7 +3,12 @@ header
     img.logo.img.left(src="img/logo-img.png")
     img.logo.text.left(src="img/logo-text.png")
   nav: ul.right.text-right.inline-list._menu
-    li: a(href= dev ? "services.html" : "services") Services
-    li: a(href= dev ? "company.html" : "company") Company
-    li: a(href= dev ? "contact.html" : "contact") Contact
-    //- li: i.icon-globe
+    li: a.decorated(href= dev ? "services.html" : "services") Services
+    li: a.decorated(href= dev ? "company.html" : "company") Company
+    li: a.decorated(href= dev ? "contact.html" : "contact") Contact
+    li: a(data-dropdown="dropdown"): i.icon-globe
+      
+  ul#dropdown.f-dropdown(data-dropdown-content="")
+    li: a(href="/") English
+    li: a(href="/ja") 日本語
+    li: a(href="/fr") Français
