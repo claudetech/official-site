@@ -1,6 +1,57 @@
 news:
   label: News
 
+company:
+  label: Company
+  mission-statement: |
+    Claude Tech owns its name to the father of information
+    theory, Claude Shannon.
+  name:
+    label: Company name
+    value: Claude Tech, Inc.
+  president:
+    label: President
+    value: Yuya Soneoka
+  founded:
+    label: Founded
+    value: 26 August 2014
+  capital:
+    label: Capital
+    value: 3000000 JPY
+  address:
+    label: Address
+    value: |
+      114-0013
+      <br>
+      Daiichi Asaka bldg. 2F
+      <br>
+      2-3-1 Higashi-Tabata Kita-ku Tokyo JAPAN
+  access:
+    label: Access
+    value: |
+      Yamanote Line/Keihin Tohoku Line, Tabata station<br>
+      4 minutes walking from north exit
+  team:
+    label: メンバー
+    soneoka:
+      name: Yuya Soneoka
+      bio: |
+        Graduated from Tokyo University Faculty of Engineering.
+        Doing research about data mining in collaboration with Recruit holdings.
+    daniel:
+      name: Perez Daniel
+      bio: |
+        I was born and raised in France, and am now studying computer science in Japan.
+        I love programming in general.
+        I like doing pretty much anything from web programming
+        to having fun with the Linux kernel.
+    naito:
+      name: Takao Naito
+      bio: |
+        I am a designer and engineer. Fascinated by design, colors and minimalist UI.
+        I am on master degree in Tallinn University of Technology, Estonia.
+        I also pursue my passion for traveling and drinking.
+
 services:
   label: Services
   introduction1: |
@@ -62,9 +113,6 @@ services:
         <br>
         It has everything you need to create a static website or a single
         page application in a flash.
-
-company:
-  label: Company
 
 contact:
   label: Contact

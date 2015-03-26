@@ -5,49 +5,46 @@ block content
   
   main._company
     ._page-header: .column.small-12.text-center
-      h1 Company
+      h1(data-t) company.label
       
     .row: .column.medium-6.medium-centered
-      p.text-center.intro
-        | Claude Tech owns its name to the father of information theory, Claude Shannon.
+      p.text-center.intro(data-t) company.mission-statement
       
     .row.info
       dl.column.medium-5.address
-        dt Company name
-        dd Claude Tech
-        dt President
-        dd Yuya Soneoka
-        dt Founded
-        dd 26 August 2014
-        dt Capital
-        dd 3,000,000 JPY
-        dt Address
-        dd 114-0013<br>Daiichi Asaka bldg. 2F<br>2-3-1 Higashi-Tabata, Kita-ku Tokyo, JAPAN
-        dt Access
-        dd Yamanote Line/Keihin Tohoku Line, Tabata station<br>4 minutes walking from north exit
+        dt(data-t) company.name.label
+        dd(data-t) company.name.value
+        dt(data-t) company.president.label
+        dd(data-t) company.president.value
+        dt(data-t) company.founded.label
+        dd(data-t) company.founded.value
+        dt(data-t) company.capital.label
+        dd(data-t) company.capital.value
+        dt(data-t) company.address.label
+        dd(data-t) company.address.value
+        dt(data-t) company.access.label
+        dd(data-t) company.access.value
         
       .column.medium-7.map
-        .overlay
         | <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6476.844012715416!2d139.761043!3d35.740431!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188de846b25d1b%3A0xe2566d258ffa3177!2s2+Chome-3-1+Higashitabata%2C+Kita-ku%2C+T%C5%8Dky%C5%8D-to+114-0013!5e0!3m2!1sen!2sjp!4v1426758551708" width="100%" height="460" frameborder="0" style="border:0"></iframe>
         
     .row.members
-      h2.head.text-center Our team
+      h2.head.text-center(data-t) company.team.label
       .column.medium-4
         img.face(src="img/team/soneoka.jpg")
-        h5 Yuya Soneoka
+        h5(data-t) company.team.soneoka.name
         address soneoka@claudetech.com
-        p Graduated from Tokyo University Faculty of Engineering. 
-        p Doing research about data mining in collaboration with Recruit holdings.
+        p(data-t) company.team.soneoka.bio
       .column.medium-4
         img.face(src="img/team/daniel.jpg")
-        h5 Daniel Perez
+        h5(data-t) company.team.daniel.name
         address daniel@claudetech.com
-        p I was born and raised in France, and am now studying computer science in Japan. I love programming in general. I like doing pretty much anything from web programming to having fun with the Linux kernel.
+        p(data-t) company.team.daniel.bio
       .column.medium-4
         img.face(src="img/team/naito.jpg")
         h5 Takao Naito
         address naito@claudetech.com
-        p I am a designer and engineer. Fascinated by design, colors and minimalist UI. I am on master degree in Tallinn University of Technology, Estonia. I also pursue my passion for traveling and drinking.
+        p(data-t) company.team.naito.bio
          
         
   include partials/_footer
