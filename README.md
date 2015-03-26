@@ -1,3 +1,3 @@
-# claudetech-corp-site
+# Claude Tech Official website
 Source for [Claude Tech official website](http://claudetech.com/).
-Use [leaves](http://claudetech.github.io/leaves/) for development.
+Use [leaves](http://leaves.claudetech.com/) for development.
