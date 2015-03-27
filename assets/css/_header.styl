@@ -34,10 +34,12 @@ header
         display block
         margin 0 auto
         width 0
+        opacity 0
       &:hover:before, &:hover:after
         border-color #fff
-        transition width 0.1s ease-out
+        transition all 0.1s ease-out
         width 100%
+        opacity 1
 
     .icon-globe
       color white
@@ -54,6 +56,7 @@ header
         list-style-type none
         border-radius 0.3em
         absolute top 2.5em right -1em
+        box-shadow 4px 4px 5px rgba(0,0,0,0.4)
         &:before
           size 0 0
           border-left 0.5em solid transparent

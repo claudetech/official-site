@@ -1,3 +1,5 @@
+lang: en
+
 news:
   label: News
   2015/02/21:
@@ -32,7 +34,7 @@ company:
     value: 26 August 2014
   capital:
     label: Capital
-    value: 3000000 JPY
+    value: 3,000,000 JPY
   address:
     label: Address
     value: |
@@ -61,10 +63,10 @@ company:
     naito:
       name: Takao Naito
       bio: |
-        As the creative director and engineer of Claude Tech,
-        I am fascinated with design, types and interface,
-        and also pursue my passion for traveling and drinking.
-        I am on master degree in Tallinn University of Technology, Estonia.
+        I am a designer and engineer,
+        currently on master degree in Tallinn University of Technology, Estonia.
+        Fascinated with design, types and interface,
+        and also I pursue my passion for traveling and drinking.
 
 services:
   label: Services
