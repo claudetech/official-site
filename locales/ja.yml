@@ -1,4 +1,5 @@
 lang: ja
+root: /
 
 news:
   label: ニュース
@@ -140,4 +141,3 @@ contact:
 
 misc:
   home: ホーム
-  root: /ja/
