@@ -2,7 +2,7 @@ news:
   label: ニュース
   2015/02/21:
     url: https://www.ipa.go.jp/jinzai/mitou/2014/seikahoukoku21th.html
-    head: 弊社の曽根岡とDanielが第21回未踏事業成果報告会でVoiseeの発表をしました
+    head: 第21回未踏事業成果報告会でVoiseeの発表をしました
   2015/02/01:
     url: http://voisee.jp/
     head: スマホアプリ型共創コミュニティ Voiseeのティザーサイトを公開しました
@@ -139,3 +139,4 @@ contact:
 
 misc:
   home: ホーム
+  root: /ja/

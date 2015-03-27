@@ -2,7 +2,7 @@ news:
   label: News
   2015/02/21:
     url: https://www.ipa.go.jp/jinzai/mitou/2014/seikahoukoku21th.html
-    head: Yuya and Daniel presented Voisee at Mito 21st Final Report.
+    head: We presented Voisee at Mito 21st Final Report.
   2015/02/01:
     url: http://voisee.jp/
     head: We released Voisee, a smartphone based cocreation plaftorm.
@@ -141,3 +141,4 @@ contact:
 
 misc:
   home: Home
+  root: /
