@@ -4,9 +4,9 @@ header
     img.logo.text.left(src="img/logo-text.png")
   nav: ul.right.text-right._menu
     li
-      - if dev
+      if dev
         a.decorated.show-for-large-up(href="index.html" data-t) misc.home
-      - else
+      else
         a.decorated.show-for-large-up(href-t="misc.root" data-t) misc.home
     li: a.decorated(href= dev ? "services.html" : "services" data-t) services.label
     li: a.decorated(href= dev ? "company.html" : "company" data-t) company.label
