@@ -1,5 +1,6 @@
 lang: en
 root: /en/
+mission-statement: We are focused on creating new values through creative technological innovations.
 
 news:
   label: News
@@ -21,7 +22,7 @@ news:
 
 company:
   label: Company
-  mission-statement: |
+  origin: |
     Claude Tech owns its name to the father of information
     theory, Claude Shannon.
   name:

@@ -1,5 +1,6 @@
 lang: ja
 root: /
+mission-statement: 技術と革新性で新しい価値の創造へ。
 
 news:
   label: ニュース
@@ -74,7 +75,7 @@ services:
 
 company:
   label: 会社概要
-  mission-statement: |
+  origin: |
     Claude Techという社名はコンピュータ技術の基礎を作り上げた<br>
     情報理論の父、クロード・シャノンに由来します。
   name:

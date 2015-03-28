@@ -8,8 +8,7 @@ block content
       img(src="img/slogan.svg")
         
     .row: .column.medium-6.medium-centered
-      p.text-center.intro
-        | We are focused on creating new values through creative technological innovations.
+      p.text-center.intro(data-t) mission-statement
         
     .row.news
       h2.head.text-center(data-t) news.label
@@ -17,7 +16,7 @@ block content
         each k in ['2015/02/21', '2015/02/01', '2014/11/01', '2014/09/30', '2014/08/26']
           dt.column.small-3.text-right #{k}
           dd.column.small-9
-            a.link(target="_blank" href-t="news.#{k}.url")
+            a.link(target="_blank" href-t="news.#{k}.url" data-attr-t)
               span.message(data-t) news.#{k}.head
         
   include partials/_footer
