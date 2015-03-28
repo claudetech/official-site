@@ -1,22 +1,19 @@
 extends ./layout.jade
 
 block content
-  include partials/_header
-  
   main._top
     .hero(data-0="background-position:center 0px;" data-500="background-position:center -200px;")
       img(src="img/slogan.svg")
         
-    .row: .column.medium-6.medium-centered
+    .row: .column.small-12.medium-8.large-6.small-centered
       p.text-center.intro(data-t) mission-statement
         
     .row.news
       h2.head.text-center(data-t) news.label
-      dl.row
+      dl
         each k in ['2015/02/21', '2015/02/01', '2014/11/01', '2014/09/30', '2014/08/26']
           dt.column.small-3.text-right #{k}
           dd.column.small-9
             a.link(target="_blank" href-t="news.#{k}.url" data-attr-t)
               span.message(data-t) news.#{k}.head
         
-  include partials/_footer

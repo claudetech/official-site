@@ -1,8 +1,6 @@
 extends ./layout.jade
 
 block content
-  include partials/_header
-  
   main._services
     ._page-header: .column.small-12.text-center
       h1(data-t) services.label
@@ -46,6 +44,3 @@ block content
         dl
           dt: a(href="http://leaves.claudetech.com/") Leaves
           dd(data-t) services.opensource.leaves.description
-    
-      
-  include partials/_footer

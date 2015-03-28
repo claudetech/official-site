@@ -1,18 +1,22 @@
 header
-  a.left(data-attr-t href-t="root")
-    img.logo.img.left(src="img/logo-img.png")
-    img.logo.text.left(src="img/logo-text.png")
-  nav: ul.right.text-right._menu
+  a.logo(data-attr-t href-t="root")
+    img.img(src="img/logo-img.png")
+    img.text(src="img/logo-text.png")
+  ul._menu
     li
       if dev
         a.decorated.show-for-large-up(href="index.html" data-t) misc.home
       else
         a.decorated.show-for-large-up(data-attr-t href-t="root" data-t) misc.home
-    li: a.decorated(href= dev ? "services.html" : "services" data-t) services.label
-    li: a.decorated(href= dev ? "company.html" : "company" data-t) company.label
-    li: a.decorated(href= dev ? "contact.html" : "contact" data-t) contact.label
-    li.dropdown
-      i.icon-globe 
+    each k in ['services', 'company', 'contact']
+      li: a.decorated(href= dev ? "#{k}.html" : "#{k}" data-t) #{k}.label
+      
+    li._dropdown
+      i.icon-globe.show-for-medium-up
+      a.decorated.show-for-small-only(href="/en/") English
       ul
         li: a(href="/") 日本語
         li: a(href="/en/") English
+        
+  span.hamburger-icon.show-for-small-only
+    a(href="#"): i.icon-menu

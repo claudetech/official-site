@@ -1,31 +1,32 @@
 shorten-header()
-  padding-top 0.5em
-  padding-bottom 0.5em
-  background rgba(0,0,0,0.5)
-  .img
-    height 2em
-  .text
-    display none
-  ._menu li
-    margin-top 0
+  background rgba(48, 60, 64, 0.9)
+  padding 0.4em 3em
+  .logo .img
+    height 2.5em
+
+header, header *
+  transition all 0.5s
 
 header
   absolute fixed 0
-  padding 2em 4em
-  size 100% 3em
-  transition all 0.5s
+  align-items center
+  background rgba(0,0,0,0)
+  display flex
+  justify-content space-between
+  padding 1em 3em
+  width 100%
   z-index 10
   .logo
-    height 3em
-    transition all 0.5s
+    .img, .text
+      height 3em
   ._menu
-    margin-bottom 0
+    margin 0
+    font-size 1.2em
+    font-weight bold
     li
-      margin 0.5em 0 0 2em
-      font-size 1.2em
-      font-weight bold
-      position relative
       display inline-block
+      + li
+        margin-left 2em
     a.decorated
       color white
       &:before, &:after
@@ -43,19 +44,16 @@ header
 
     .icon-globe
       color white
-      relative top 4px
+      relative top 2px
 
-    .dropdown
-      margin 0
-      padding 0 0 1em 2em
+    ._dropdown
+      position relative
       ul
-        transition all 0.1s ease-out
-        opacity 0
         display none
         background white
         list-style-type none
         border-radius 0.3em
-        absolute top 2.5em right -1em
+        absolute top 2em right -1em
         box-shadow 4px 4px 5px rgba(0,0,0,0.4)
         &:before
           size 0 0
@@ -63,10 +61,11 @@ header
           border-right 0.5em solid transparent
           border-bottom 0.5em solid white
           content ''
-          absolute top -0.5em right 1.1em
+          absolute top -0.5em right 1em
         li
           margin 0
           padding 0
+          display block
           + li:last-child
             border-top 1px solid #eee
         a
@@ -78,24 +77,42 @@ header
           line-height 2.4em
       &:hover ul
         display inline-block
-        opacity 1
         li:hover a
           color #222
-
 
   &.scrolled
     shorten-header()
 
-  @media only screen and (max-width: 40em)
-    shorten-header()
-    padding 0.5em 2em
-    .logo.text
-      display none
-    ._menu li
-      font-size 0.9em
-      margin 0 0 0 1em
+  .hamburger-icon a
+    color white
+    font-size 2em
+    line-height 0
 
-  @media only screen and (min-width: 40em) and (max-width: 50em)
-    ._menu li
-      font-size 0.9em
-      margin 0.7em 0 0 1em
+  @media only screen and (max-width: 60em)
+    shorten-header()
+    padding 0.2em 1em !important
+    ._menu
+      font-size 1em
+      li + li
+        margin-left 1em
+
+  @media only screen and (max-width: 40em)
+    ._menu
+      display none
+      font-size 1.2em
+      font-weight normal
+      absolute top 54px left 0
+      width 100%
+      li
+        display block
+        + li
+          border-top 1px solid rgba(255,255,255,0.4)
+          margin 0
+          padding 0.5em 1em
+        a.decorated
+          display block
+          size 100% 100%
+          &:before, &:after
+            border none
+      ._dropdown ul
+        opacity 0

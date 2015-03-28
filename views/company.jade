@@ -1,8 +1,6 @@
 extends ./layout.jade
 
 block content
-  include partials/_header
-  
   main._company
     ._page-header: .column.small-12.text-center
       h1(data-t) company.label
@@ -27,6 +25,3 @@ block content
           h5(data-t) company.team.#{k}.name
           address #{k}@claudetech.com
           p(data-t) company.team.#{k}.bio
-         
-        
-  include partials/_footer

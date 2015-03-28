@@ -1,4 +1,5 @@
 html
+  overflow-x hidden
   &.en
     body, h1, h2, h3, h4, h5, h6
       font-family 'Lato', sans-serif
@@ -18,11 +19,6 @@ body
     line-height 16rem
     relative top 2rem
 
-p.intro
-  font-size 23px
-  line-height 38px
-  margin 1em 0 0.5em
-
 main
   min-height: calc(100vh - 5em)
   > div
@@ -31,6 +27,11 @@ main
       padding-top 0
     &:last-child
       padding-bottom 5em
+
+p.intro
+  font-size 23px
+  line-height 38px
+  margin 1em 0 0.5em
 
 h2.head
   line-height 0
