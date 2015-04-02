@@ -5,8 +5,11 @@ footer
   .logo
     opacity 0.6
     height 3.6em
+    float left
   ._social
     margin 0
+    float right
+    display inline-block
     a
       color #aaa
       font-size 1.4rem
@@ -14,3 +17,9 @@ footer
       transition color 0.3s
       &:hover
         color lightblue
+  @media screen and (max-width: 40em)
+    text-align center
+    .logo
+      float none
+    ._social
+      float none
