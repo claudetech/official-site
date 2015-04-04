@@ -7,7 +7,7 @@ Parse.Cloud.define("sendEmail", function(request, response) {
   var message = request.params.message;
 
   sendgrid.sendEmail({
-   to: "naito@claudetech.com",
+   to: "general@claudetech.com",
    from: "no-reply@claudetech.com",
    fromname: "Claude Tech mail form",
    subject: "Email from Claude Tech mail form",
