@@ -1,6 +1,6 @@
 $(function(){
 
-  skrollr.init({forceHeight: false});
+  // skrollr.init({forceHeight: false});
 
   $('.hamburger-icon a').click(function(){
     $('._menu').toggle();
