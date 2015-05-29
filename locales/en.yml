@@ -62,13 +62,6 @@ company:
         I love programming in general.
         I like doing pretty much anything from web programming
         to having fun with the Linux kernel.
-    naito:
-      name: Takao Naito
-      bio: |
-        I am a designer and engineer,
-        currently on master degree in Tallinn University of Technology, Estonia.
-        Fascinated with design, types and interface,
-        and also I pursue my passion for traveling and drinking.
 
 services:
   label: Services
