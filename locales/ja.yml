@@ -4,6 +4,12 @@ mission-statement: 技術と革新性で新しい価値の創造へ。
 
 news:
   label: ニュース
+  2015/10/01:
+    url: http://www.kddi.com/ventures/mugenlabo/original-team/
+    head: KDDI∞Labo9期に弊社のサービスApplifyが採択されました
+  2015/06/14:
+    url: http://prtimes.jp/main/html/rd/p/000000025.000008789.html
+    head: 弊社の曽根岡とダニエルがPaypal主催のハッカソン「Battle Hack Tokyo」で優勝し、<br>世界大会に参加することが決まりました
   2015/02/21:
     url: https://www.ipa.go.jp/jinzai/mitou/2014/seikahoukoku21th.html
     head: 第21回未踏事業成果報告会でVoiseeの発表をしました

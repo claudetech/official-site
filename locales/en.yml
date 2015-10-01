@@ -4,6 +4,12 @@ mission-statement: We are focused on creating new values through creative techno
 
 news:
   label: News
+  2015/10/01:
+    url: http://www.kddi.com/ventures/mugenlabo/original-team/
+    head: Our product 'Applify' is selected as 9th member of KDDI Mugen Lab.
+  2015/06/14:
+    url: http://prtimes.jp/main/html/rd/p/000000025.000008789.html
+    head: We won Battle Hack Tokyo 2015, the hackathon managed by Paypal.
   2015/02/21:
     url: https://www.ipa.go.jp/jinzai/mitou/2014/seikahoukoku21th.html
     head: We presented Voisee at Mito 21st Final Report.
