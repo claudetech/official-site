@@ -1,0 +1,17 @@
+{
+  "parse": {
+    "applications": {
+      "CLAUDE TECH emailer": {
+        "applicationId": "APP ID",
+        "masterKey": "MASTER KEY"
+      },
+      "_default": {
+        "link": "CLAUDE TECH emailer"
+      }
+    }
+  },
+  "sendgrid": {
+    "username": "USERNAME",
+    "password": "PASSWORD"
+  }
+}
