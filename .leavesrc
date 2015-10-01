@@ -8,7 +8,7 @@
     },
     "commands": {
         "publish": {
-            "provider": "ftp",
+            "provider": "github",
             "resetSettings": false
         }
     },
