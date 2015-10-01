@@ -12,6 +12,7 @@ $(document).ready(function(){
 
     Parse.Cloud.run("sendEmail", data, {
       success: function(object) {
+        $('#name, #email, #message').attr('readonly', true);
         $('#submit').hide();
         $('#response').html('Message sent!').addClass('success').fadeIn('fast');
       },
