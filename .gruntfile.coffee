@@ -404,7 +404,7 @@ module.exports = (grunt) ->
   compileTasks = [
     'clean'
     'makeCopy'
-    # 'imagemin'
+    'imagemin'
     'stylus'
     'coffee'
     'views'
