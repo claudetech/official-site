@@ -10,19 +10,20 @@ block content
         p.text-center.intro(data-t) services.introduction1
         p.text-center.intro(data-t) services.introduction2
         
-    .row.items: .column.small-12
-      h3(data-t) services.webservice.label
-      p(data-t) services.webservice.value
-      .column.medium-7
-        dl
-          dt: a(href="http://voisee.jp") Voisee
-          dd(data-t) services.webservice.voisee.description
-          dt: a(href="http://coocreed.jp") CooCREED
-          dd(data-t) services.webservice.coocreed.description
-      .column.medium-5
-        figure
-          img(src="img/services/voisee.png")
-          figcaption(data-t) services.webservice.voisee.dashboard
+    .row.items
+      .row.item: .column.small-12
+        h3(data-t) services.webservice.label
+        p(data-t) services.webservice.value
+        .column.medium-10.medium-centered
+          ._service
+            a(href="https://buildy.jp")
+              .figure
+                img(src="img/services/buildy.png")
+              .description-box
+                .title Buildy
+                .description.hide-for-small-only(data-t) services.webservice.buildy.description
+
+
         
       
       .row.item: .column.small-12

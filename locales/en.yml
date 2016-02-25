@@ -4,6 +4,9 @@ mission-statement: We are focused on creating new values through creative techno
 
 news:
   label: News
+  2016/02/22:
+    url: http://jp.techcrunch.com/2016/02/22/kddi-mugen-labo-9th/
+    head: We presented Buildy, a smartphone based cocreation plaftorm at KDDI Mugen Lab 9th Demoday. And We released its beta version.
   2015/10/01:
     url: http://www.kddi.com/ventures/mugenlabo/original-team/
     head: Our product 'Applify' is selected as 9th member of KDDI Mugen Lab.
@@ -85,15 +88,9 @@ services:
   webservice:
     label: Web service development
     value: We are using our development skills to innovate and create new products and services.
-    voisee:
+    buildy:
       description: |
-        lorem ipsum bla bla blah
-      dashboard: Voisee Dashboard
-    coocreed:
-      description: |
-        CooCREED is a social platform to improve university education.
-        It is now introduced at Tokyo University to propose new ideas and
-        improvements to the university, and make education move forward.
+        Mobile app generator for shops.
 
   consulting:
     label: Consulting

@@ -4,6 +4,9 @@ mission-statement: 技術と革新性で新しい価値の創造へ。
 
 news:
   label: ニュース
+  2016/02/22:
+    url: http://jp.techcrunch.com/2016/02/22/kddi-mugen-labo-9th/
+    head: KDDI∞Labo9期のDemoDayでスマホアプリ作成サービス「Buildy」を発表し、β版をリリースしました
   2015/10/01:
     url: http://www.kddi.com/ventures/mugenlabo/original-team/
     head: KDDI∞Labo9期に弊社のサービスApplifyが採択されました
@@ -37,21 +40,11 @@ services:
   webservice:
     label: Webサービス開発事業
     value: 自社の強みを活かして、まだ世の中にない驚きを与えるサービスの開発を目指しています。
-    voisee:
+    buildy:
       description: |
-        飲食店に特化したスマホアプリ型共創コミュニティです。
-        お店ごとのスマホアプリが簡単に作成できることでお客様とコミュニケーションを促し、
-        より多くのリピーターを育てられます。
+        スマホアプリをたった3分でカンタンに無料で作れるサービスです。
         <br>
-        またダッシュボード上でインターネットに散らばる情報を収集・解析し、
-        お店の状況を深く知ることも出来ます。
-      dashboard: Voisee ダッシュボード
-    coocreed:
-      description: |
-       「現在の大学教育は学生のニーズとかけ離れている」<br>
-         ･･･そう思ったことはありませんか？
-         我々はWeb上で大学の問題点を集め、賛同が得られているものから大学にかけあうことで、
-         学生主導で教育・設備・サービスを変えていきます。
+        お店でリピーターとのコミュニケーションでお使いいただけます。
   consulting:
     label: コンサルティング事業
     value: |
