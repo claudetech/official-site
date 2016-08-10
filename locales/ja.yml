@@ -4,6 +4,9 @@ mission-statement: 技術と革新性で新しい価値の創造へ。
 
 news:
   label: ニュース
+  2016/08/10:
+    url: http://prtimes.jp/main/html/rd/p/000000003.000019235.html
+    head: スマホアプリ作成サービス「Buildy（ビルディ）」を正式リリースしました
   2016/02/22:
     url: http://jp.techcrunch.com/2016/02/22/kddi-mugen-labo-9th/
     head: KDDI∞Labo9期のDemoDayでスマホアプリ作成サービス「Buildy」を発表し、β版をリリースしました
