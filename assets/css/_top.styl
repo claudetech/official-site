@@ -9,14 +9,27 @@
       max-width 70%
       width 500px
 
-  .news
-    .date
-      text-align right
-
-  @media screen and (max-width: 40em)
-    .news
-      dd
-        margin-bottom 2em
-
-      .date
-        text-align left
+  .news, .media
+    h2
+      margin 0 auto 1.2em
+      font-size 1.8em
+      max-width 320px
+      border-bottom 2px solid #2f434e
+      padding-bottom 0.5em
+    .news-list
+      max-width 720px
+      margin 0 auto
+      .item
+        border-bottom 1px solid #ddd
+        padding 25px 20px
+        font-weight bold
+        .date
+          color #757575
+          font-size 14px
+          margin: 0 0 20px
+        .content a
+          color #555
+          &:hover 
+            color #008CBA
+        &:last-child
+          border-bottom 0

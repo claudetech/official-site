@@ -32,6 +32,21 @@ news:
     url: https://www.facebook.com/claudetech
     head: Claude Tech has been founded.
 
+media:
+  label: In the press
+  2016/08/23:
+    url: http://itlife.oshiete.goo.ne.jp/article/1596
+    head: Buildy has been introduced by "goo IT life ch"
+  2016/08/17:
+    url: http://www.seleqt.net/service/buildy/
+    head: Buildy has been introduced by "Seleqt"
+  2016/08/12:
+    url: http://it-koala.com/digital_marketing-1630#DMP
+    head: Buildy has been introduced by "IT Koala Navi"
+  2016/08/10:
+    url: http://thebridge.jp/2016/08/claudetech-launches-buildy
+    head: Buildy has been introduced by "THE BRIDGE"
+
 company:
   label: Company
   origin: |

@@ -32,6 +32,21 @@ news:
     url: https://www.facebook.com/claudetech
     head: Claude Techを設立しました
 
+media:
+  label: メディア掲載
+  2016/08/23:
+    url: http://itlife.oshiete.goo.ne.jp/article/1596
+    head: 「教えて! goo ITライフch」に「最短3分でスマホアプリが簡単に作れる「Buildy」　東大発ベンチャーがリリース」が掲載されました
+  2016/08/17:
+    url: http://www.seleqt.net/service/buildy/
+    head: 「Seleqt」の「最速3分でマイスマホアプリが作れる！ 企業から個人店主まで、いかに顧客を囲い込むかが勝負」で「Buildy」が紹介されました
+  2016/08/12:
+    url: http://it-koala.com/digital_marketing-1630#DMP
+    head: 「IT Koala Navi」の「マーケター・エンジニア必読！デジタルマーケティングのトレンドとツール」で「Buildy」が紹介されました
+  2016/08/10:
+    url: http://thebridge.jp/2016/08/claudetech-launches-buildy
+    head: 「THE BRIDGE」に「未踏クリエータの2人が創業したクロードテック、中小店舗が自前のアプリを作れるプラットフォーム「Buildy」をローンチ」が掲載されました
+
 services:
   label: サービス
   introduction1: |
